@@ -49,10 +49,9 @@ ENGINE = InnoDB;
 -- Table `GamEvaluate`.`Genere`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamEvaluate`.`Genere` (
-  `ID_Genere` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(45) NOT NULL,
   `Descrizione` VARCHAR(400) NOT NULL,
-  PRIMARY KEY (`ID_Genere`))
+  PRIMARY KEY (`Nome`))
 ENGINE = InnoDB;
 
 
@@ -60,9 +59,8 @@ ENGINE = InnoDB;
 -- Table `GamEvaluate`.`Piattaforma`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamEvaluate`.`Piattaforma` (
-  `ID_Piattaforma` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ID_Piattaforma`))
+  PRIMARY KEY (`Nome`))
 ENGINE = InnoDB;
 
 
@@ -74,26 +72,26 @@ CREATE TABLE IF NOT EXISTS `GamEvaluate`.`Gioco` (
   `Nome` VARCHAR(45) NOT NULL,
   `Descrizione` VARCHAR(2000) NOT NULL,
   `Immagine` BLOB NULL,
-  `ID_Genere` INT NOT NULL,
-  `ID_Piattaforma` INT NOT NULL,
+  `Genere` VARCHAR(45) NOT NULL,
+  `Piattaforma` VARCHAR(45) NOT NULL,
   `ID_Valutazione` INT NOT NULL,
   PRIMARY KEY (`ID_Gioco`),
-  INDEX `ID_Genere_idx` (`ID_Genere` ASC) VISIBLE,
-  INDEX `ID_Piattaforma_idx` (`ID_Piattaforma` ASC) VISIBLE,
   INDEX `ID_Valutazione_idx` (`ID_Valutazione` ASC) VISIBLE,
-  CONSTRAINT `ID_Genere`
-    FOREIGN KEY (`ID_Genere`)
-    REFERENCES `GamEvaluate`.`Genere` (`ID_Genere`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `ID_Piattaforma`
-    FOREIGN KEY (`ID_Piattaforma`)
-    REFERENCES `GamEvaluate`.`Piattaforma` (`ID_Piattaforma`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+  INDEX `Genere_idx` (`Genere` ASC) VISIBLE,
+  INDEX `Piattaforma_idx` (`Piattaforma` ASC) VISIBLE,
   CONSTRAINT `ID_Valutazione`
     FOREIGN KEY (`ID_Valutazione`)
     REFERENCES `GamEvaluate`.`Valutazione` (`ID_Valutazione`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `Genere`
+    FOREIGN KEY (`Genere`)
+    REFERENCES `GamEvaluate`.`Genere` (`Nome`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `Piattaforma`
+    FOREIGN KEY (`Piattaforma`)
+    REFERENCES `GamEvaluate`.`Piattaforma` (`Nome`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
