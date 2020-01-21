@@ -103,14 +103,13 @@ ENGINE = InnoDB;
 -- Table `GamEvaluate`.`Recensione`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `GamEvaluate`.`Recensione` (
-  `ID_Recensione` INT NOT NULL AUTO_INCREMENT,
   `Testo` VARCHAR(2000) NOT NULL,
   `Data` DATETIME NOT NULL,
   `ID_Gioco` INT NOT NULL,
   `Username` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ID_Recensione`),
   INDEX `ID_Gioco_idx` (`ID_Gioco` ASC) VISIBLE,
   INDEX `Username_idx` (`Username` ASC) VISIBLE,
+  PRIMARY KEY (`Username`, `ID_Gioco`),
   CONSTRAINT `ID_Gioco`
     FOREIGN KEY (`ID_Gioco`)
     REFERENCES `GamEvaluate`.`Gioco` (`ID_Gioco`)
