@@ -4,13 +4,13 @@ import com.mysql.cj.jdbc.Blob;
 
 public class Gioco {
 	
-	private String id;
+	private int id;
 	private String nome;
 	private String descrizione;
 	private Blob immagine;
 	
 	
-	public Gioco(String id, String nome, String descrizione, Blob immagine) {
+	public Gioco(int id, String nome, String descrizione, Blob immagine) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -23,13 +23,13 @@ public class Gioco {
 	}
 
 
-	public String getCodice() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setCodice(String codice) {
-		this.id = codice;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
@@ -72,7 +72,7 @@ public class Gioco {
 			return false;
 		
 		Gioco g = (Gioco)o;
-		return g.getCodice().equals(this.id);
+		return g.getId() == this.id;
 	}
 
 

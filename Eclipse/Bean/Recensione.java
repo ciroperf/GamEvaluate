@@ -5,7 +5,6 @@ public class Recensione {
 	private String data,testo,gioco,username;
 	
 	public Recensione(String testo, String gioco, String username, String data) {
-		super();
 		this.testo = testo;
 		this.gioco = gioco;
 		this.username = username;
@@ -47,8 +46,6 @@ public class Recensione {
 	public Recensione() {
 		
 	}
-	
-
 
 	@Override
 	public boolean equals(Object o) {
