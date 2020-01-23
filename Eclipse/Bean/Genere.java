@@ -46,7 +46,7 @@ public class Genere {
 			return false;
 		Genere g = (Genere) o;
 		
-		return g.getNome().equals(this.getNome());
+		return g.getNome().equals(this.nome);
 
 	}
 

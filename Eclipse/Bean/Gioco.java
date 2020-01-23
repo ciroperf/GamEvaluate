@@ -4,15 +4,15 @@ import com.mysql.cj.jdbc.Blob;
 
 public class Gioco {
 	
-	private String codice;
+	private String id;
 	private String nome;
 	private String descrizione;
 	private Blob immagine;
 	
 	
-	public Gioco(String codice, String nome, String descrizione, Blob immagine) {
+	public Gioco(String id, String nome, String descrizione, Blob immagine) {
 		super();
-		this.codice = codice;
+		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.immagine = immagine;
@@ -24,12 +24,12 @@ public class Gioco {
 
 
 	public String getCodice() {
-		return codice;
+		return id;
 	}
 
 
 	public void setCodice(String codice) {
-		this.codice = codice;
+		this.id = codice;
 	}
 
 
@@ -72,13 +72,13 @@ public class Gioco {
 			return false;
 		
 		Gioco g = (Gioco)o;
-		return g.getCodice().equals(this.codice);
+		return g.getCodice().equals(this.id);
 	}
 
 
 	@Override
 	public String toString() {
-		return "Gioco [codice=" + codice + ", nome=" + nome + ", descrizione=" + descrizione + ", immagine=" + immagine
+		return "Gioco [id=" + id + ", nome=" + nome + ", descrizione=" + descrizione + ", immagine=" + immagine
 				+ "]";
 	}
 	

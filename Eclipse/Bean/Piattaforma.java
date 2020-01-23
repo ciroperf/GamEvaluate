@@ -30,7 +30,7 @@ public class Piattaforma {
 		
 		Piattaforma p = (Piattaforma) o;
 		
-		return p.getNome().equals(this.getNome());
+		return p.getNome().equals(this.nome);
 	}
 
 	

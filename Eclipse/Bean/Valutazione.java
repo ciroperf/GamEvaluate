@@ -2,7 +2,7 @@ package gamevaluate.bean;
 
 public class Valutazione {
 	
-	private String codice;
+	private String id;
 	private int gameplay;
 	private int trama;
 	private int grafica;
@@ -14,9 +14,9 @@ public class Valutazione {
 	private int difficolta;
 	
 	
-	public Valutazione(String codice, int gameplay, int trama, int grafica, int creativita, int innovazione,
+	public Valutazione(String id, int gameplay, int trama, int grafica, int creativita, int innovazione,
 			int coinvolgimento, int realismo, int rigiocabilita, int difficolta) {
-		this.codice = codice;
+		this.id = id;
 		this.gameplay = gameplay;
 		this.trama = trama;
 		this.grafica = grafica;
@@ -33,15 +33,13 @@ public class Valutazione {
 	}
 
 
-	public String getCodice() {
-		return codice;
+	public String getID_Valutazione() {
+		return id;
 	}
 
-
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setID_Valutazione(String iD_Valutazione) {
+		id = iD_Valutazione;
 	}
-
 
 	public int getGameplay() {
 		return gameplay;
@@ -142,13 +140,13 @@ public class Valutazione {
 			return false;
 		
 		Valutazione v = (Valutazione)o;
-		return v.getCodice().equals(this.getCodice());
+		return v.getID_Valutazione().equals(this.id);
 	}
 
 
 	@Override
 	public String toString() {
-		return "Valutazione [codice =" + codice + ", gameplay=" + gameplay + ", trama=" + trama + ", grafica=" + grafica
+		return "Valutazione [id =" + id + ", gameplay=" + gameplay + ", trama=" + trama + ", grafica=" + grafica
 				+", creativita=" + creativita + ", innovazione=" + innovazione + ", coinvolgimento=" + coinvolgimento
 				+ "realismo=" + realismo + ", rigiocabilita=" + rigiocabilita + ", difficolta=" + difficolta + "]";
 	}
