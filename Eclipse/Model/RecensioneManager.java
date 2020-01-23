@@ -83,7 +83,7 @@ public class RecensioneManager {
 		return (Collection<Recensione>) products;
 	}
 
-	public void doSave(Recensione product) throws SQLException {
+	public void doSave(Recensione recensione) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -99,10 +99,10 @@ public class RecensioneManager {
 		{
 			try
 			{
-				preparedStatement.setString(1, product.getTesto());
-				preparedStatement.setString(2, product.getGioco());
-				preparedStatement.setString(3, product.getData());
-				preparedStatement.setString(4, product.getUsername());
+				preparedStatement.setString(1, recensione.getTesto());
+				preparedStatement.setString(2, recensione.getGioco());
+				preparedStatement.setString(3, recensione.getData());
+				preparedStatement.setString(4, recensione.getUsername());
 				
 				preparedStatement.executeUpdate();
 			}
@@ -116,11 +116,11 @@ public class RecensioneManager {
 		
 	}
 
-	public void doUpdate(Recensione product) throws SQLException {
+	public void doUpdate(Recensione recensione) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String updateSQL = "UPDATE " + RecensioneManager.TABLE_NAME + " SET" +
+		String updateSQL = "UPDATE " + RecensioneManager.TABLE_NAME + " SET " +
 		"Testo = ?"+", ID_Gioco = ?"+", Data = ?"+", Username = ?"+
 				"WHERE ID_Gioco = ? AND Data = ? AND Username = ?";
 		try
@@ -132,13 +132,13 @@ public class RecensioneManager {
 		{
 			try
 			{
-				preparedStatement.setString(1, product.getTesto());
-				preparedStatement.setString(2, product.getGioco());
-				preparedStatement.setString(3, product.getData());
-				preparedStatement.setString(4, product.getUsername());
-				preparedStatement.setString(5, product.getGioco());
-				preparedStatement.setString(6, product.getData());
-				preparedStatement.setString(7, product.getUsername());
+				preparedStatement.setString(1, recensione.getTesto());
+				preparedStatement.setString(2, recensione.getGioco());
+				preparedStatement.setString(3, recensione.getData());
+				preparedStatement.setString(4, recensione.getUsername());
+				preparedStatement.setString(5, recensione.getGioco());
+				preparedStatement.setString(6, recensione.getData());
+				preparedStatement.setString(7, recensione.getUsername());
 				
 				preparedStatement.executeUpdate();
 			}

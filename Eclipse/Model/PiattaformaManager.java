@@ -109,7 +109,7 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String updateSQL = "UPDATE " + PiattaformaManager.TABLE_NAME + " SET" +
+		String updateSQL = "UPDATE " + PiattaformaManager.TABLE_NAME + " SET " +
 		"Nome = ?"+
 				"WHERE Nome = ?";
 		try
