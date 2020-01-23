@@ -15,6 +15,10 @@ public class GeneralUser {
 		this.role = role;
 		this.banned = banned;
 	}
+	
+	public GeneralUser() {
+		
+	}
 
 	public String getEmail() {
 		return email;

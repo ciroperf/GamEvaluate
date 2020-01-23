@@ -8,6 +8,10 @@ public class Piattaforma {
 	public Piattaforma(String nome) {
 		this.nome = nome;
 	}
+	
+	public Piattaforma() {
+		
+	}
 
 	public String getNome() {
 		return nome;

@@ -27,6 +27,10 @@ public class Valutazione {
 		this.rigiocabilita = rigiocabilita;
 		this.difficolta = difficolta;
 	}
+	
+	public Valutazione() {
+		
+	}
 
 
 	public String getCodice() {

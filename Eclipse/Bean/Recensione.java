@@ -11,6 +11,9 @@ public class Recensione {
 		this.testo = testo;
 	}
 	
+	public Recensione() {
+		
+	}
 	
 	public String getCodice() {
 		return codice;

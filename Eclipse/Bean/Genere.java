@@ -5,14 +5,14 @@ public class Genere {
 	private String nome;
 	private String descrizione;
 	
-	
-	
 	public Genere(String nome, String descrizione) {
 		this.nome = nome;
 		this.descrizione = descrizione;
 	}
 
-
+	public Genere() {
+		
+	}
 
 	public String getNome() {
 		return nome;
@@ -50,14 +50,9 @@ public class Genere {
 
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Genere [nome=" + nome + ", descrizione=" + descrizione + "]";
 	}
 	
-	
-	
-
 }

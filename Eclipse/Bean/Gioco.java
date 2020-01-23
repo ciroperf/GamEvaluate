@@ -17,6 +17,10 @@ public class Gioco {
 		this.descrizione = descrizione;
 		this.immagine = immagine;
 	}
+	
+	public Gioco() {
+		
+	}
 
 
 	public String getCodice() {
