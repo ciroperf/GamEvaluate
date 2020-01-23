@@ -2,7 +2,7 @@ package gamevaluate.bean;
 
 public class Valutazione {
 	
-	private String id;
+	private int id;
 	private int gameplay;
 	private int trama;
 	private int grafica;
@@ -14,7 +14,7 @@ public class Valutazione {
 	private int difficolta;
 	
 	
-	public Valutazione(String id, int gameplay, int trama, int grafica, int creativita, int innovazione,
+	public Valutazione(int id, int gameplay, int trama, int grafica, int creativita, int innovazione,
 			int coinvolgimento, int realismo, int rigiocabilita, int difficolta) {
 		this.id = id;
 		this.gameplay = gameplay;
@@ -33,12 +33,12 @@ public class Valutazione {
 	}
 
 
-	public String getID_Valutazione() {
+	public int getId() {
 		return id;
 	}
 
-	public void setID_Valutazione(String iD_Valutazione) {
-		id = iD_Valutazione;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getGameplay() {
@@ -140,7 +140,7 @@ public class Valutazione {
 			return false;
 		
 		Valutazione v = (Valutazione)o;
-		return v.getID_Valutazione().equals(this.id);
+		return v.getId() == this.id;
 	}
 
 
