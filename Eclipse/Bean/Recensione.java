@@ -2,25 +2,22 @@ package gamevaluate.bean;
 
 public class Recensione {
 	
-	private String codice;
-	private String testo;
+	private String data,testo,gioco,username;
 	
-	public Recensione(String codice, String testo) {
+	public Recensione(String testo, String gioco, String username, String data) {
 		super();
-		this.codice = codice;
 		this.testo = testo;
+		this.gioco = gioco;
+		this.username = username;
+		this.data = data;
 	}
 	
-	public Recensione() {
-		
-	}
-	
-	public String getCodice() {
-		return codice;
+	public String getData() {
+		return data;
 	}
 
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setData(String data) {
+		this.data = data;
 	}
 
 	public String getTesto() {
@@ -31,6 +28,28 @@ public class Recensione {
 		this.testo = testo;
 	}
 
+	public String getGioco() {
+		return gioco;
+	}
+
+	public void setGioco(String gioco) {
+		this.gioco = gioco;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Recensione() {
+		
+	}
+	
+
+
 	@Override
 	public boolean equals(Object o) {
 		if (o == null)
@@ -40,12 +59,12 @@ public class Recensione {
 		
 		Recensione r = (Recensione)o;
 		
-		return r.getCodice().equals(this.getCodice());
+		return r.getUsername().equals(this.getUsername()) && r.getGioco().equals(this.getGioco()) && r.getData().equals(this.getData());
 	}
 	
 	@Override
 	public String toString() {
-		return "Recensione [codice = " + codice + ", testo = " + testo + "]";
+		return "Recensione [testo = " + testo + ", gioco = "+ gioco + ", username = "+ username +", data = "+data+"]";
 	}
 	
 	
