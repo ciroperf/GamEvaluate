@@ -75,7 +75,7 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		return (Collection<Piattaforma>) products;
 	}
 
-	public void doSave(Piattaforma product) throws SQLException {
+	public void doSave(Piattaforma piattaforma) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -91,7 +91,7 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		{
 			try
 			{
-				preparedStatement.setString(1, product.getNome());
+				preparedStatement.setString(1, piattaforma.getNome());
 				
 				preparedStatement.executeUpdate();
 			}
@@ -105,7 +105,7 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		
 	}
 
-	public void doUpdate(Piattaforma product) throws SQLException {
+	public void doUpdate(Piattaforma piattaforma) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -121,7 +121,7 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		{
 			try
 			{
-				preparedStatement.setString(1, product.getNome());
+				preparedStatement.setString(1, piattaforma.getNome());
 				
 				preparedStatement.executeUpdate();
 			}
