@@ -39,6 +39,11 @@ body::before {
 #middle {
 	display: table-cell;
   	vertical-align: middle;
+  	text-align: center;
+}
+
+.formwrapper {
+	padding : 0% 20% 5% 20%;
 }
 
 #loginform {
@@ -47,9 +52,8 @@ body::before {
 	margin : 0 auto;
 	text-align : center;
 	background-color : #7c0000;
-	display : grid;
-	grid-template-columns: 1fr;
-	grid-template-rows : auto 10px auto 10px 1fr 25px;
+	display : flex;
+	flex-direction : column;
 	border-style : solid;
 	border-width : 2px;
 }
@@ -61,7 +65,6 @@ body::before {
 }
 
 #miniheader {
-	grid-row : 1 / 2;
 	display : block;
 	text-align : center;
 }
@@ -228,6 +231,10 @@ span {
 	justify-self : center;
 }
 
+.alert {
+	width : 65%;
+	display : inline-block;
+}
 
 @media only screen and (max-width: 768px) {
 	#inputform .button {

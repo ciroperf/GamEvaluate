@@ -59,12 +59,11 @@ public class Login extends HttpServlet {
 				trovato = false;
 			if(!trovato) {
 				String err="Errore : username/password errati";
-				session.setAttribute("error", err);
-				RequestDispatcher rd = request.getRequestDispatcher("/GamEvaluate/presentation/login.jsp");
-				rd.forward(request, response);
+				session.setAttribute("message", err);
+				response.sendRedirect("presentation/login.jsp");
 			} else {
 				session.setAttribute("user", user);
-				response.sendRedirect("/GamEvaluate/presentation/home.jsp");
+				response.sendRedirect("presentation/home.jsp");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errore retrieveByKey : "+ e.getMessage());
