@@ -28,7 +28,7 @@
 		<hr>
 		</div>
 		<p class="inserisci">Inserisci le tue credenziali</p>
-		<form id="inputform" name="login" action="/login"  method="post">
+		<form id="inputform" name="login" action="/GamEvaluate/login"  method="post">
 			<label for="username">Username : </label>
 			<input class="insert" type="text" name="username" id="username" placeholder="Username..." >
 			<label for="password">Password : </label>
@@ -38,12 +38,14 @@
 			<div id="buttons">
 			<input class="button" type="reset" value="Reset">
 			<input class="button" type="submit" value="Enter">
-			<input class="button" type="submit" value="Registrati" formaction="registration.jsp">
+			<input class="button" type="submit" value="Registrati" formaction="signin.jsp">
 			</div>
 		</form>
 		<%! String nota = "";%>
-		<% if(session.getAttribute("error") != null) { %>
-			<% nota = (String)session.getAttribute("error"); %>
+		<%
+		if(session.getAttribute("error") != null) { %>
+			<% nota = (String)session.getAttribute("error");
+				session.removeAttribute("error");%>
 			<p id="notifica"><%=nota%><p>
 		<% } %>
 		</div>
