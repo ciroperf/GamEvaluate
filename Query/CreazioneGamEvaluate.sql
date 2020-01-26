@@ -131,3 +131,7 @@ DROP PRIMARY KEY,
 ADD PRIMARY KEY (`Username`, `ID_Gioco`, `Data`);
 ;
 
+
+ALTER TABLE `gamevaluate`.`gioco` 
+CHANGE COLUMN `Immagine` `Immagine` VARCHAR(2048) NULL DEFAULT NULL ;
+
