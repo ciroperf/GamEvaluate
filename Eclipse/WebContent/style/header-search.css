@@ -55,6 +55,8 @@
 .searchbar input:focus {
 	background-color : #000000;
 	color : #F50909;
+	border: 1px solid #800000;
+	box-shadow: none;
 }
 
 .searchbar input:focus::placeholder {
