@@ -58,7 +58,7 @@ public class GiocoManager {
 		String selectSQL = "SELECT * FROM " +  TABLE_NAME;
 		
 		if(order != null && !order.equals("")) {
-			selectSQL += " ORDER BY" + order;
+			selectSQL += " ORDER BY Nome " + order;
 		}
 		
 		try {

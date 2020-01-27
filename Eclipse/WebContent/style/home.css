@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+.site-container {
+	display : flex;
+	flex-direction: column;
+}
+
+
+.content-container {
+	background-color : #842828;
+	height: 110%;
+    width: 70%;
+    position: fixed;
+    align-self: center;
+    z-index : 1;
+}
+
+
+#content {
+	margin-top : 189px;
+	z-index : 2;
+    width: 70%;
+    margin-left : 15%;
+	margin-bottom : 30px;
+}
+
+
+body {
+	background-image : url("/GamEvaluate/images/BodyGamEvaluate.png");
+	background-position: center;
+}
