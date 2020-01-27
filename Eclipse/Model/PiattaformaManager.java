@@ -48,9 +48,11 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		Collection<Piattaforma> products = new ArrayList<Piattaforma>();
 		
 		String selectSQL = "SELECT * FROM "+ PiattaformaManager.TABLE_NAME;
+		
 		if(order != null && !order.equals("")) {
 			selectSQL += " ORDER BY" + order;
 		}
+		
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();

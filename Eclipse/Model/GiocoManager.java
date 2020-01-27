@@ -57,6 +57,10 @@ public class GiocoManager {
 		ArrayList<Gioco> giochi = new ArrayList<Gioco>();
 		String selectSQL = "SELECT * FROM " +  TABLE_NAME;
 		
+		if(order != null && !order.equals("")) {
+			selectSQL += " ORDER BY" + order;
+		}
+		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);

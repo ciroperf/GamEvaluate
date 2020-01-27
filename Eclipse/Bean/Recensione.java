@@ -2,13 +2,20 @@ package gamevaluate.bean;
 
 public class Recensione {
 	
-	private String data,testo,gioco,username;
+	private String data,testo,username;
+	private int gioco;
 	
-	public Recensione(String testo, String gioco, String username, String data) {
+	public Recensione(String testo, int gioco, String username, String data) {
 		this.testo = testo;
 		this.gioco = gioco;
 		this.username = username;
 		this.data = data;
+	}
+	
+	public Recensione(String testo, int gioco, String username) {
+		this.testo = testo;
+		this.gioco = gioco;
+		this.username = username;
 	}
 	
 	public String getData() {
@@ -27,11 +34,11 @@ public class Recensione {
 		this.testo = testo;
 	}
 
-	public String getGioco() {
+	public int getGioco() {
 		return gioco;
 	}
 
-	public void setGioco(String gioco) {
+	public void setGioco(int gioco) {
 		this.gioco = gioco;
 	}
 
@@ -56,7 +63,7 @@ public class Recensione {
 		
 		Recensione r = (Recensione)o;
 		
-		return r.getUsername().equals(this.getUsername()) && r.getGioco().equals(this.getGioco()) && r.getData().equals(this.getData());
+		return r.getUsername().equals(this.username) && r.getGioco() == this.gioco && r.getData().equals(this.data);
 	}
 	
 	@Override
