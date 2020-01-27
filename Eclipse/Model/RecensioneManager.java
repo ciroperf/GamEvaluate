@@ -12,7 +12,7 @@ import gamevaluate.bean.Recensione;
 public class RecensioneManager {
 	private static final String TABLE_NAME = "recensione";
 	
-	public Recensione doRetrieveByKey(String gioco, String username, String data) throws SQLException {
+	public Recensione doRetrieveByKey(int gioco, String username, String data) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -22,7 +22,7 @@ public class RecensioneManager {
 			try {
 				connection = DriverManagerConnectionPool.getConnection();
 				preparedStatement = connection.prepareStatement(selectSQL);
-				preparedStatement.setString(1,gioco);
+				preparedStatement.setInt(1,gioco);
 				preparedStatement.setString(2,username);
 				preparedStatement.setString(3,data);
 				
@@ -30,7 +30,7 @@ public class RecensioneManager {
 				
 				while (rs.next()) {
 					bean.setTesto(rs.getString("Testo"));
-					bean.setGioco(rs.getString("ID_Gioco"));
+					bean.setGioco(rs.getInt("ID_Gioco"));
 					bean.setData(rs.getString("Data"));
 					bean.setUsername(rs.getString("Username"));
 				}
@@ -68,7 +68,7 @@ public class RecensioneManager {
 				bean.setTesto(rs.getString("Testo"));
 				bean.setData(rs.getString("Data"));
 				bean.setUsername(rs.getString("Username"));
-				bean.setGioco(rs.getString("ID_Gioco"));
+				bean.setGioco(rs.getInt("ID_Gioco"));
 				
 				products.add(bean);
 			}
@@ -99,7 +99,7 @@ public class RecensioneManager {
 			try
 			{
 				preparedStatement.setString(1, recensione.getTesto());
-				preparedStatement.setString(2, recensione.getGioco());
+				preparedStatement.setInt(2, recensione.getGioco());
 				preparedStatement.setString(3, recensione.getUsername());
 				
 				preparedStatement.executeUpdate();
@@ -131,10 +131,10 @@ public class RecensioneManager {
 			try
 			{
 				preparedStatement.setString(1, recensione.getTesto());
-				preparedStatement.setString(2, recensione.getGioco());
+				preparedStatement.setInt(2, recensione.getGioco());
 				preparedStatement.setString(3, recensione.getData());
 				preparedStatement.setString(4, recensione.getUsername());
-				preparedStatement.setString(5, recensione.getGioco());
+				preparedStatement.setInt(5, recensione.getGioco());
 				preparedStatement.setString(6, recensione.getData());
 				preparedStatement.setString(7, recensione.getUsername());
 				
@@ -150,7 +150,7 @@ public class RecensioneManager {
 		
 	}
 
-	public boolean doDelete(String data, String gioco, String username) throws SQLException {
+	public boolean doDelete(String data, int gioco, String username) throws SQLException {
 		int retvalue;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -165,7 +165,7 @@ public class RecensioneManager {
 		{
 			try
 			{
-				preparedStatement.setString(1, gioco);
+				preparedStatement.setInt(1, gioco);
 				preparedStatement.setString(2, data);
 				preparedStatement.setString(3, username);
 				

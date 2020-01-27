@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `gamevaluate`.`valutazione` (
   `Realismo` INT(11) NOT NULL DEFAULT '0',
   `Rigiocabilita` INT(11) NOT NULL DEFAULT '0',
   `Difficolta` INT(11) NOT NULL DEFAULT '0',
+  `Counter` INT(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID_Valutazione`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
