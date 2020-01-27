@@ -157,7 +157,7 @@
 			}
 	</script>
 	<div class="header-container">
-		<img class="header-img" alt="File not found" src="/GamEvaluate/images/logo-lungo.png">
+		<a class ="header-img" href="/GamEvaluate/presentation/home.jsp"><img lt="File not found" src="/GamEvaluate/images/logo-lungo.png"></a>
 		<div class="search-container ">
 			<div class="active-black-3 active-black-4 mb-4 searchbar">
   				<input oninput="doSearch()" id="searchbar" class="form-control" type="text" placeholder="Search" aria-label="Search">
