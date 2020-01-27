@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
-
 import gamevaluate.connectionPool.DriverManagerConnectionPool;
 import gamevaluate.bean.Valutazione;
 
@@ -38,6 +37,7 @@ public class ValutazioneManager {
 					bean.setRealismo(rs.getInt("Realismo"));
 					bean.setRigiocabilita(rs.getInt("Rigiocabilita"));
 					bean.setTrama(rs.getInt("Trama"));
+					bean.setCounter(rs.getInt("Counter"));
 				
 				}
 			} finally {
@@ -56,7 +56,7 @@ public class ValutazioneManager {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		Collection<Valutazione> products = new LinkedList<Valutazione>();
+		Collection<Valutazione> products = new ArrayList<Valutazione>();
 		
 		String selectSQL = "SELECT * FROM "+ ValutazioneManager.TABLE_NAME;
 		if(order != null && !order.equals("")) {
@@ -81,6 +81,7 @@ public class ValutazioneManager {
 				bean.setRealismo(rs.getInt("Realismo"));
 				bean.setRigiocabilita(rs.getInt("Rigiocabilita"));
 				bean.setTrama(rs.getInt("Trama"));
+				bean.setCounter(rs.getInt("Counter"));
 				
 				products.add(bean);
 			}
@@ -91,7 +92,7 @@ public class ValutazioneManager {
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 		
-		return (Collection<Valutazione>) products;
+		return products;
 	}
 
 	public void doSave(Valutazione valutazione) throws SQLException {
@@ -99,8 +100,8 @@ public class ValutazioneManager {
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO " + ValutazioneManager.TABLE_NAME +
-				" (Gameplay, Trama, Grafica, Creativita, Innovazione, Coinvolgimento, Realismo, Rigiocabilita, Difficolta) "+
-				" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				" (Gameplay, Trama, Grafica, Creativita, Innovazione, Coinvolgimento, Realismo, Rigiocabilita, Difficolta, ID_Valutazione, Counter) "+
+				" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		try
 		{
 			connection = DriverManagerConnectionPool.getConnection();
@@ -119,6 +120,8 @@ public class ValutazioneManager {
 				preparedStatement.setInt(7, valutazione.getRealismo());
 				preparedStatement.setInt(8, valutazione.getRigiocabilita());
 				preparedStatement.setInt(9, valutazione.getDifficolta());
+				preparedStatement.setInt(10, valutazione.getId());
+				preparedStatement.setInt(11, valutazione.getCounter());
 				
 				preparedStatement.executeUpdate();
 			}
@@ -137,8 +140,8 @@ public class ValutazioneManager {
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + ValutazioneManager.TABLE_NAME + " SET " +
-		"Gameplay = ?"+", Trama = ?"+", Grafica = ?"+", Creativita = ?"+", Innovazione = ?"+", Coinvolgimento = ?"+", Realismo = ?"+", Rigiocabilita = ?"+", Difficolta = ?"+
-				"WHERE ID_Valutazione = ?";
+		"Gameplay = ?"+", Trama = ?"+", Grafica = ?"+", Creativita = ?"+", Innovazione = ?"+", Coinvolgimento = ?"+", Realismo = ?"+", Rigiocabilita = ?"+", Difficolta = ?, "+
+				"Counter = ? WHERE ID_Valutazione = ?";
 		try
 		{
 			connection = DriverManagerConnectionPool.getConnection();
@@ -158,6 +161,7 @@ public class ValutazioneManager {
 				preparedStatement.setInt(8, valutazione.getRigiocabilita());
 				preparedStatement.setInt(9, valutazione.getDifficolta());
 				preparedStatement.setInt(10, valutazione.getId());
+				preparedStatement.setInt(11, valutazione.getCounter());
 				
 				preparedStatement.executeUpdate();
 			}

@@ -12,11 +12,11 @@ public class Valutazione {
 	private int realismo;
 	private int rigiocabilita;
 	private int difficolta;
+	private int counter;
 	
 	
-	public Valutazione(int id, int gameplay, int trama, int grafica, int creativita, int innovazione,
-			int coinvolgimento, int realismo, int rigiocabilita, int difficolta) {
-		this.id = id;
+	public Valutazione(int gameplay, int trama, int grafica, int creativita, int innovazione,
+			int coinvolgimento, int realismo, int rigiocabilita, int difficolta, int counter) {
 		this.gameplay = gameplay;
 		this.trama = trama;
 		this.grafica = grafica;
@@ -26,10 +26,20 @@ public class Valutazione {
 		this.realismo = realismo;
 		this.rigiocabilita = rigiocabilita;
 		this.difficolta = difficolta;
+		this.counter = counter;
 	}
 	
 	public Valutazione() {
-		
+		this.gameplay = 0;
+		this.trama = 0;
+		this.grafica = 0;
+		this.creativita = 0;
+		this.innovazione = 0;
+		this.coinvolgimento = 0;
+		this.realismo = 0;
+		this.rigiocabilita = 0;
+		this.difficolta = 0;
+		this.counter = 0;
 	}
 
 
@@ -130,6 +140,17 @@ public class Valutazione {
 		this.difficolta = difficolta;
 	}
 
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+	
+	public void addCounter() {
+		this.counter++;
+	}
 
 	@Override
 	public boolean equals(Object o) {

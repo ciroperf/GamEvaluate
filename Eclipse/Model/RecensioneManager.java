@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
-
 import gamevaluate.connectionPool.DriverManagerConnectionPool;
 import gamevaluate.bean.Recensione;
 
@@ -51,7 +50,7 @@ public class RecensioneManager {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		Collection<Recensione> products = new LinkedList<Recensione>();
+		Collection<Recensione> products = new ArrayList<Recensione>();
 		
 		String selectSQL = "SELECT * FROM "+ RecensioneManager.TABLE_NAME;
 		if(order != null && !order.equals("")) {
@@ -80,7 +79,7 @@ public class RecensioneManager {
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 		
-		return (Collection<Recensione>) products;
+		return products;
 	}
 
 	public void doSave(Recensione recensione) throws SQLException {
@@ -89,7 +88,7 @@ public class RecensioneManager {
 		
 		String insertSQL = "INSERT INTO " + RecensioneManager.TABLE_NAME +
 				" (Testo, ID_Gioco, Data, Username) "+
-				" VALUES (?, ?, ?, ?) ";
+				" VALUES (?, ?, NOW(), ?) ";
 		try
 		{
 			connection = DriverManagerConnectionPool.getConnection();
@@ -101,8 +100,7 @@ public class RecensioneManager {
 			{
 				preparedStatement.setString(1, recensione.getTesto());
 				preparedStatement.setString(2, recensione.getGioco());
-				preparedStatement.setString(3, recensione.getData());
-				preparedStatement.setString(4, recensione.getUsername());
+				preparedStatement.setString(3, recensione.getUsername());
 				
 				preparedStatement.executeUpdate();
 			}

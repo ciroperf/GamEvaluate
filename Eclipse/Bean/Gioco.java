@@ -1,33 +1,27 @@
 package gamevaluate.bean;
 
-import com.mysql.cj.jdbc.Blob;
 
 public class Gioco {
 	
 	private int id;
 	private String nome;
 	private String descrizione;
-	private Blob immagine;
+	private String immagine;
 	private String genere;
 	private String piattaforma;
-	private String valutazione;
-	
-	
+	private int valutazione;
 
-	
-	public Gioco(int id, String nome, String descrizione, Blob immagine, String genere, String piattaforma,
-			String valutazione) {
-		super();
-		this.id = id;
+	public Gioco(String nome, String descrizione, String immagine, String genere, String piattaforma) {
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.immagine = immagine;
 		this.genere = genere;
 		this.piattaforma = piattaforma;
-		this.valutazione = valutazione;
 	}
-
-
+	
+	public Gioco() {
+		
+	}
 
 	public String getGenere() {
 		return genere;
@@ -43,21 +37,6 @@ public class Gioco {
 
 	public void setPiattaforma(String piattaforma) {
 		this.piattaforma = piattaforma;
-	}
-
-
-
-	public String getValutazione() {
-		return valutazione;
-	}
-
-
-	public void setValutazione(String valutazione) {
-		this.valutazione = valutazione;
-	}
-
-	public Gioco() {
-		
 	}
 
 	public int getId() {
@@ -88,17 +67,24 @@ public class Gioco {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+	
+	public int getValutazione() {
+		return valutazione;
+	}
 
 
-	public Blob getImmagine() {
+	public void setValutazione(int valutazione) {
+		this.valutazione = valutazione;
+	}
+
+
+	public String getImmagine() {
 		return immagine;
 	}
 
-
-	public void setImmagine(java.sql.Blob blob) {
-		this.immagine = (Blob) blob;
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
-
 
 	@Override
 	public boolean equals(Object o) {
@@ -115,7 +101,7 @@ public class Gioco {
 	@Override
 	public String toString() {
 		return "Gioco [id=" + id + ", nome=" + nome + ", descrizione=" + descrizione + ", immagine=" + immagine
-				+ ", genere=" + genere + ", piattaforma=" + piattaforma + ", valutazione=" + valutazione + "]";
+				+ ", genere=" + genere + ", piattaforma=" + piattaforma + "]";
 	}
 
 }

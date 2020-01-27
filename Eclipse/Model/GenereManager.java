@@ -108,7 +108,7 @@ public class GenereManager {
 		
 	}
 
-
+	//IMPOSSIBILE DA ESEGUIRE
 	public void doUpdate(Genere genere) throws SQLException {
 	
 		Connection connection = null;

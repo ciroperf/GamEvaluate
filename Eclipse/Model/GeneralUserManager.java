@@ -11,7 +11,7 @@ import gamevaluate.connectionPool.DriverManagerConnectionPool;
 
 public class GeneralUserManager implements ProductModel<GeneralUser>{
 	
-	private static final String TABLE_NAME = "generalusers";
+	private static final String TABLE_NAME = "generaluser";
 
 	@Override
 	public GeneralUser doRetrieveByKey(String username) throws SQLException {
@@ -20,7 +20,7 @@ public class GeneralUserManager implements ProductModel<GeneralUser>{
 		PreparedStatement preparedStatement = null;
 		GeneralUser bean = new GeneralUser();
 		
-		String selectSQL = "SELECT * FROM " +  TABLE_NAME + " WHERE Username=" + username + "";
+		String selectSQL = "SELECT * FROM " +  TABLE_NAME + " WHERE Username='" + username + "'";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();

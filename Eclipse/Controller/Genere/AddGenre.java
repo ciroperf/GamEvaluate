@@ -12,7 +12,7 @@ import gamevaluate.bean.Genere;
 import gamevaluate.model.GenereManager;
 
 
-@WebServlet("/admin/AddGenre")
+@WebServlet("/AddGenre")
 public class AddGenre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static GenereManager model = new GenereManager();

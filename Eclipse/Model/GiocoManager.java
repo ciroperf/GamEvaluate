@@ -34,10 +34,10 @@ public class GiocoManager {
 				bean.setId(rs.getInt("ID_Gioco"));
 				bean.setNome(rs.getString("Nome"));
 				bean.setDescrizione(rs.getString("Descrizione"));
-				bean.setImmagine(rs.getBlob("Immagine"));
+				bean.setImmagine(rs.getString("Immagine"));
 				bean.setGenere(rs.getString("Genere"));
 				bean.setPiattaforma(rs.getString("Piattaforma"));
-				bean.setValutazione(rs.getString("ID_Valutazione"));
+				bean.setValutazione(rs.getInt("ID_Valutazione"));
 			}
 		} finally {
 			try {
@@ -67,10 +67,10 @@ public class GiocoManager {
 				bean.setId(rs.getInt("ID_Gioco"));
 				bean.setNome(rs.getString("Nome"));
 				bean.setDescrizione(rs.getString("Descrizione"));
-				bean.setImmagine(rs.getBlob("Immagine"));
+				bean.setImmagine(rs.getString("Immagine"));
 				bean.setGenere(rs.getString("Genere"));
 				bean.setPiattaforma(rs.getString("Piattaforma"));
-				bean.setValutazione(rs.getString("ID_Valutazione"));
+				bean.setValutazione(rs.getInt("ID_Valutazione"));
 				giochi.add(bean);
 			}
 			
@@ -91,17 +91,16 @@ public class GiocoManager {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String insertSQL = "INSERT INTO " + TABLE_NAME + 
-				" (Nome, Descrizione, Immagine, Genere, Piattaforma, ID_Valutazione)" +
+				" (Nome, Descrizione, Immagine, Genere, Piattaforma)" +
 				" VALUES(?, ?, ?, ?, ?, ?)";
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, gioco.getNome());
 			preparedStatement.setString(2, gioco.getDescrizione());
-			preparedStatement.setBlob(3, gioco.getImmagine());
+			preparedStatement.setString(3, gioco.getImmagine());
 			preparedStatement.setString(4, gioco.getGenere());
 			preparedStatement.setString(5, gioco.getPiattaforma());
-			preparedStatement.setString(6, gioco.getValutazione());
 			
 			preparedStatement.executeUpdate();
 			
@@ -116,6 +115,34 @@ public class GiocoManager {
 		}
 		
 	}
+	
+	public int getLastId() throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int id = -1;
+		
+		String selectSQL = "SELECT max(ID_Gioco) from gamevaluate.gioco;";
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				id = rs.getInt("max(ID_Gioco)");
+			}
+		} finally {
+			try {
+				if(preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+			DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+
+		return id;
+
+	}
 
 	public void doUpdate(Gioco gioco) throws SQLException {
 		
@@ -125,7 +152,8 @@ public class GiocoManager {
 
 		String updateSQL = "UPDATE " + TABLE_NAME + " SET " +
 				"ID_Gioco = ?, Nome = ?, Descrizione = ?, Immagine = ?, Genere ?" +
-				"Piattaforma = ?, ID_Valutazione = ?";
+				"Piattaforma = ?, ID_Valutazione = ?" +
+				"WHERE ID_Gioco = ?";
 		
 
 		try {
@@ -134,11 +162,12 @@ public class GiocoManager {
 			preparedStatement.setInt(1, gioco.getId());
 			preparedStatement.setString(2, gioco.getNome());
 			preparedStatement.setString(3, gioco.getDescrizione());
-			preparedStatement.setBlob(4, gioco.getImmagine());
+			preparedStatement.setString(4, gioco.getImmagine());
 			preparedStatement.setString(5, gioco.getGenere());
 			preparedStatement.setString(6, gioco.getPiattaforma());
-			preparedStatement.setString(7, gioco.getValutazione());
-			
+			preparedStatement.setInt(7, gioco.getValutazione());
+			preparedStatement.setInt(8, gioco.getId());
+
 			preparedStatement.executeUpdate();
 			
 			

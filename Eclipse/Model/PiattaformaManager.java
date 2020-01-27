@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
-
 import gamevaluate.connectionPool.DriverManagerConnectionPool;
 import gamevaluate.bean.Piattaforma;
 
@@ -46,7 +45,7 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		Collection<Piattaforma> products = new LinkedList<Piattaforma>();
+		Collection<Piattaforma> products = new ArrayList<Piattaforma>();
 		
 		String selectSQL = "SELECT * FROM "+ PiattaformaManager.TABLE_NAME;
 		if(order != null && !order.equals("")) {
@@ -72,10 +71,10 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 			DriverManagerConnectionPool.releaseConnection(connection);
 		}
 		
-		return (Collection<Piattaforma>) products;
+		return products;
 	}
 
-	public void doSave(Piattaforma piattaforma) throws SQLException {
+	public void doSave(Piattaforma product) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
@@ -91,7 +90,7 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		{
 			try
 			{
-				preparedStatement.setString(1, piattaforma.getNome());
+				preparedStatement.setString(1, product.getNome());
 				
 				preparedStatement.executeUpdate();
 			}
@@ -105,13 +104,13 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		
 	}
 
-	public void doUpdate(Piattaforma piattaforma) throws SQLException {
+	//IMPOSSIBILE DA ESEGUIRE
+	public void doUpdate(Piattaforma product) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		String updateSQL = "UPDATE " + PiattaformaManager.TABLE_NAME + " SET " +
-		"Nome = ?"+
-				"WHERE Nome = ?";
+		"Nome = ? WHERE Nome = ?";
 		try
 		{
 			connection = DriverManagerConnectionPool.getConnection();
@@ -121,7 +120,8 @@ public class PiattaformaManager implements ProductModel<Piattaforma>{
 		{
 			try
 			{
-				preparedStatement.setString(1, piattaforma.getNome());
+				preparedStatement.setString(1, product.getNome());
+				preparedStatement.setString(2, product.getNome());
 				
 				preparedStatement.executeUpdate();
 			}

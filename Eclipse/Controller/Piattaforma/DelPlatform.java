@@ -15,7 +15,7 @@ import gamevaluate.model.GiocoManager;
 import gamevaluate.model.PiattaformaManager;
 
 
-@WebServlet("admin/DelPlatform")
+@WebServlet("/DelPlatform")
 public class DelPlatform extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

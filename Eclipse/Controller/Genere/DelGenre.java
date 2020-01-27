@@ -15,7 +15,7 @@ import gamevaluate.model.GenereManager;
 import gamevaluate.model.GiocoManager;
 
 
-@WebServlet("admin/DelGenre")
+@WebServlet("/DelGenre")
 public class DelGenre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static GenereManager modelGenere = new GenereManager();
