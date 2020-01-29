@@ -104,7 +104,29 @@ CREATE TABLE IF NOT EXISTS `gamevaluate`.`gioco` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `gamevaluate`.`ha_votato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gamevaluate`.`ha_votato` (
+  `Username` VARCHAR(45) NOT NULL,
+  `ID_Gioco` INT(11) NOT NULL,
+  PRIMARY KEY (`Username`, `ID_Gioco`),
+  INDEX `Gioco_idx` (`ID_Gioco` ASC) VISIBLE,
+  CONSTRAINT `Gioco_Vote`
+    FOREIGN KEY (`ID_Gioco`)
+    REFERENCES `gamevaluate`.`gioco` (`ID_Gioco`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `Username_Vote`
+    FOREIGN KEY (`Username`)
+    REFERENCES `gamevaluate`.`generaluser` (`Username`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
