@@ -1,4 +1,4 @@
-package gamevaluate.controller.gestioneAccount;
+package gamevaluate.controller.gestioneRicerca;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,12 +12,12 @@ import gamevaluate.bean.GeneralUser;
 import gamevaluate.model.GeneralUserManager;
 
 
-@WebServlet("/UserInfo")
-public class UserInfo extends HttpServlet {
+@WebServlet("/VisualizzaUtente")
+public class VisualizzaUtente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static GeneralUserManager model = new GeneralUserManager();
 
-    public UserInfo() {
+    public VisualizzaUtente() {
         super();
     }
 
@@ -35,7 +35,7 @@ public class UserInfo extends HttpServlet {
 				
 				session.removeAttribute("user");
 				session.setAttribute("user", g);
-				response.sendRedirect("/GamEvaluate/presentation/user/user-info.jsp");
+				response.sendRedirect("/GamEvaluate/presentation/user-info.jsp");
 			}
 			
 			
