@@ -47,7 +47,7 @@
 				document.getElementById("select-genre").innerHTML = xhr.responseText;
 			}
 			};
-			xhr.open("get","/GamEvaluate/selectfiller?target=genre",true);
+			xhr.open("get","/GamEvaluate/selectfiller?target=genre&for_filters=1",true);
 			xhr.send(); 
 		}
 		function fillSelectPlatform() {
@@ -57,7 +57,7 @@
 				document.getElementById("select-platform").innerHTML = xhr.responseText;
 			}
 			};
-			xhr.open("get","/GamEvaluate/selectfiller?target=platform",true);
+			xhr.open("get","/GamEvaluate/selectfiller?target=platform&for_filters=1",true);
 			xhr.send(); 
 		}
 		function fillHome() {

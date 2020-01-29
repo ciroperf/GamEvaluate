@@ -38,6 +38,7 @@ public class SelectFiller extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		String target = request.getParameter("target");
+		int for_filters = Integer.parseInt(request.getParameter("for_filters"));
 		
 		switch(target) {
 			case "genre" :
@@ -47,7 +48,8 @@ public class SelectFiller extends HttpServlet {
 					for(Genere genere : generi) {
 						out.println("<a onclick=\"genereChanged('"+genere.getNome()+"')\" class=\"dropdown-item\" href=\"#\" role=\"button\">"+genere.getNome()+"</a>");
 					}
-					out.println("<a  onclick=\"genereChanged('Tutti')\"class=\"dropdown-item\" href=\"#\" role=\"button\">Tutti</a>");
+					if(for_filters == 1)
+						out.println("<a  onclick=\"genereChanged('Tutti')\"class=\"dropdown-item\" href=\"#\" role=\"button\">Tutti</a>");
 				} catch (SQLException e) {
 					System.out.println("Errore retrieveAll di generi nel riempimento delle select nei filtri : "+e.getMessage());
 				}
@@ -57,9 +59,10 @@ public class SelectFiller extends HttpServlet {
 				try {
 					ArrayList<Piattaforma> piattaforme = (ArrayList<Piattaforma>)piattaforma_manager.doRetrieveAll("");
 					for(Piattaforma piattaforma : piattaforme) {
-						out.println("<button onclick=\"piattaformaChanged('"+piattaforma.getNome()+"')\"class=\"dropdown-item\" type=\"button\">"+piattaforma.getNome()+"</button>");
+						out.println("<a onclick=\"piattaformaChanged('"+piattaforma.getNome()+"')\"class=\"dropdown-item\" href=\"#\" role=\"button\">"+piattaforma.getNome()+"</button>");
 					}
-					out.println("<a onclick=\"piattaformaChanged('Tutte')\" class=\"dropdown-item\" href=\"#\" role=\"button\">Tutte</a>");
+					if(for_filters == 1)
+						out.println("<a onclick=\"piattaformaChanged('Tutte')\" class=\"dropdown-item\" href=\"#\" role=\"button\">Tutte</a>");
 				} catch (SQLException e) {
 					System.out.println("Errore retrieveAll di piattaforme nel riempimento delle select nei filtri : "+e.getMessage());
 				}
