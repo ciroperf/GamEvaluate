@@ -3,16 +3,21 @@
     
     
     <%
-    	GeneralUser user = null;
-    	user = (GeneralUser)session.getAttribute("user");
+    	GeneralUser otherUser = null;
+    	otherUser = (GeneralUser)session.getAttribute("other-user");
+    	GeneralUser user = (GeneralUser)session.getAttribute("user");
     	int role = 0;
-    	if (user != null)
-    		role = user.getRole();
+    	boolean yourPage = false;
+    	if (otherUser != null ) {
+    		role = otherUser.getRole();
+    		if (otherUser.equals(user))
+    			yourPage = true;
+    			
+    	}
     	else {
     		response.sendRedirect("/GamEvaluate/presentation/home.jsp");
     		return;
     	}
-    		
     %>
     
 <!DOCTYPE html>
