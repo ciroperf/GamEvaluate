@@ -12,11 +12,36 @@
 	background-size : cover;
 }
 
+.header-container-no-search {
+	z-index : 5;
+	position : fixed;
+	width : 100%;
+	margin-left: -8px;
+	margin-top:-10px;
+	height : 25%;
+	display : flex;
+	flex-direction : row;
+	align-content: center;
+	background-image : url("/GamEvaluate/images/headerGamEvaluate.png");
+	background-size : cover;
+}
+
+
 .header-img {
 	flex-grow: 0.7;
 	margin : auto;
 	height : 80%;
 	width : 20%;
+}
+
+.header-img-no-search {
+	flex-grow: 0.7;
+	margin-right: 20%;
+	margin-top: auto;
+	margin-bottom: auto;
+	height : 80%;
+	width : 20%;
+	left: 20%;
 }
 
 
@@ -121,6 +146,7 @@
 	z-index :10;
 	border-width : 0px 0px 1px 0px;
 	padding : 2%;
+	cursor: pointer;
 }
 
 .utente-data {

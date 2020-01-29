@@ -33,9 +33,9 @@ public class UserInfo extends HttpServlet {
 
 			} else {
 				
-				session.removeAttribute("utente");
-				session.setAttribute("utente", g);
-				response.sendRedirect("/GamEvaluate/presentation/user/user.jsp");
+				session.removeAttribute("user");
+				session.setAttribute("user", g);
+				response.sendRedirect("/GamEvaluate/presentation/user/user-info.jsp");
 			}
 			
 			
