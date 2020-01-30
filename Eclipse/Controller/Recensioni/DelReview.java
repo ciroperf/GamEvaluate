@@ -2,12 +2,17 @@ package gamevaluate.controller.gestioneRecensioni;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import gamevaluate.bean.Recensione;
 import gamevaluate.model.RecensioneManager;
 
 /**
@@ -17,6 +22,7 @@ import gamevaluate.model.RecensioneManager;
 public class DelReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static RecensioneManager model = new RecensioneManager();
+	static RecensioneManager modelRecensione = new RecensioneManager();
 
 
 	public DelReview() {
@@ -36,6 +42,16 @@ public class DelReview extends HttpServlet {
 			String returnTo = request.getParameter("returnTo");
 
 			model.doDelete(data, gioco, username);
+			ArrayList<Recensione> recensioni = (ArrayList<Recensione>) modelRecensione.doRetrieveAll("");
+			
+			for(Iterator<Recensione> it = recensioni.iterator(); it.hasNext();) {
+				Recensione r = it.next();
+				if (!r.getUsername().equals(username))
+					it.remove();
+			}
+			
+			session.removeAttribute("recensioni");
+			session.setAttribute("recensioni", recensioni);
 			session.setAttribute("message", "recensione eliminata");
 			response.sendRedirect(returnTo);
 			
