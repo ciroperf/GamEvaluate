@@ -29,16 +29,24 @@ public class Unban extends HttpServlet {
 		try {
 			
 			String username = request.getParameter("username");
+			int unBanningUser = Integer.parseInt(request.getParameter("unbanningUser"));
 			
 			GeneralUser u = model.doRetrieveByKey(username);
-			u.setBanned(false);
-			model.doUpdate(u);
-			
-			session.setAttribute("message", "utente sbannato");
-			response.sendRedirect("presentation/user.jsp");
 			
 			
-		} catch(SQLException | NumberFormatException e) {
+			if (unBanningUser == 2 && u.getRole() == 2) {
+				session.setAttribute("message", "Un moderatore non può bannare/unbannare un altro moderatore");
+				response.sendRedirect("/GamEvaluate/presentation/user-info.jsp");
+			} else {
+				
+				u.setBanned(false);
+				model.doUpdate(u);
+				session.setAttribute("other-user", model.doRetrieveByKey(username));
+				response.sendRedirect("/GamEvaluate/presentation/user-info.jsp");
+			}
+			
+			
+		} catch(SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 			request.getSession().setAttribute("error", e.getMessage());
 			

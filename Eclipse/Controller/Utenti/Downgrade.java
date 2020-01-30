@@ -33,9 +33,8 @@ public class Downgrade extends HttpServlet {
 			GeneralUser u = model.doRetrieveByKey(username);
 			u.setRole(1);
 			model.doUpdate(u);
-			
-			session.setAttribute("message", "downgrade effettuato");
-			response.sendRedirect("presentation/user.jsp");
+			session.setAttribute("other-user", model.doRetrieveByKey(username));
+			response.sendRedirect("/GamEvaluate/presentation/user-info.jsp");
 			
 			
 		} catch(SQLException | NumberFormatException e) {
