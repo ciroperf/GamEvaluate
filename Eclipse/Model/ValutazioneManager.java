@@ -160,8 +160,8 @@ public class ValutazioneManager {
 				preparedStatement.setInt(7, valutazione.getRealismo());
 				preparedStatement.setInt(8, valutazione.getRigiocabilita());
 				preparedStatement.setInt(9, valutazione.getDifficolta());
-				preparedStatement.setInt(10, valutazione.getId());
-				preparedStatement.setInt(11, valutazione.getCounter());
+				preparedStatement.setInt(10, valutazione.getCounter());
+				preparedStatement.setInt(11, valutazione.getId());
 				
 				preparedStatement.executeUpdate();
 			}

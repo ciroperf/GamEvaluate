@@ -12,17 +12,18 @@ import gamevaluate.connectionPool.DriverManagerConnectionPool;
 public class HaVotatoManager{
 	private static final String TABLE_NAME = "ha_votato";
 
-	public boolean haVotato(String username) throws SQLException {
+	public boolean haVotato(String username, int id_gioco) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String selectSQL = "SELECT * FROM "+ TABLE_NAME + " WHERE Username = ?";
+		String selectSQL = "SELECT * FROM "+ TABLE_NAME + " WHERE Username = ? AND ID_Gioco = ?";
 		boolean trovato = false;
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setString(1, username);
+			preparedStatement.setInt(2, id_gioco);
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			

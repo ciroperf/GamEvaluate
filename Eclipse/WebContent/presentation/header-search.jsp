@@ -1,3 +1,4 @@
+<%@page import="gamevaluate.bean.GeneralUser"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -92,7 +93,7 @@
 							var text = "";
 							var i;
 							for(i = 0; i < utenti.length; i++) {
-								text = text.concat("<div class='utente-container'>"
+								text = text.concat("<div class='utente-container' onclick=\'window.location.href = \"/GamEvaluate/VisualizzaUtente?username=" + utenti[i].username + "\"\' >"
 										+ "<div class='utente-data'>"
 										+ "<div class='user-left-container'>"
 										+ "<img class='user-img' alt='Image not found' src='/GamEvaluate/images/user.png'>"
@@ -125,11 +126,13 @@
 							document.getElementById("content").innerHTML = text;
 						} else {
 							var giochi = arr.giochi;
-							console.log(arr);
 							var text = "";
 							var i;
 							for(i = 0; i < giochi.length; i++) {
-								text = text.concat("<div class='game-container'>"
+								if(giochi[i].valutazione == '0')
+									giochi[i].valutazione = '-';
+								text = text.concat("<a class='game-container-link' href='/GamEvaluate/presentation/info-game.jsp?gioco="+giochi[i].id+"'>"
+										+ "<div class='game-container'>"
 										+ "<div class='game-data'>"
 										+ "<div class='game-left-container'>"
 										+ "<img class='game-img' alt='Image not found' src='"+giochi[i].immagine+"'>"
@@ -146,7 +149,7 @@
 										+ "</div>"
 										+ "</div>"
 										+ "</div>");
-								text = text.concat("</div>");
+								text = text.concat("</div></a>");
 							}
 							document.getElementById("content").innerHTML = text;
 						}
@@ -158,6 +161,7 @@
 	</script>
 	<div class="header-container">
 		<a class ="header-img" href="/GamEvaluate/presentation/home.jsp"><img lt="File not found" src="/GamEvaluate/images/logo-lungo.png"></a>
+		<a href="/GamEvaluate/logout">Logout</a>
 		<div class="search-container ">
 			<div class="active-black-3 active-black-4 mb-4 searchbar">
   				<input oninput="doSearch()" id="searchbar" class="form-control" type="text" placeholder="Search" aria-label="Search">

@@ -19,3 +19,16 @@
 	width : 20%;
 }
 
+
+.alert {
+	width: 65%;
+    font-size: 18px;
+    display: inline-block;
+    position: fixed;
+    text-align : center;
+    z-index: 12;
+    margin-top : 100px;
+    margin-left: -7.5%;
+}
+
+

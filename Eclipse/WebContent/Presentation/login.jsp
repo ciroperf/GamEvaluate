@@ -54,8 +54,8 @@
 					</div>
 				</form>
 			</div>
-			<div class = "alert">
-			<%!String nota = "";%>
+			<div class = 'alert'>
+			<%!String nota;%>
 			<%
 				if (session.getAttribute("message") != null) {
 			%>
@@ -63,7 +63,7 @@
 				nota = (String) session.getAttribute("message");
 					session.removeAttribute("message");
 			%>
-			<div class="alert alert-danger">
+			<div class='alert alert-danger'>
 				<strong><%=nota %></strong>
 			</div>
 			<% } %>

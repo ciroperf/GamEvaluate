@@ -8,14 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import gamevaluate.bean.GeneralUser;
+import gamevaluate.bean.Gioco;
 import gamevaluate.bean.Valutazione;
+import gamevaluate.model.GeneralUserManager;
+import gamevaluate.model.GiocoManager;
+import gamevaluate.model.HaVotatoManager;
 import gamevaluate.model.ValutazioneManager;
 
 
-@WebServlet("/VoteGame")
+@WebServlet("/votegame")
 public class VoteGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static ValutazioneManager modelValutazione = new  ValutazioneManager();
+	private static HaVotatoManager model_haVotato = new  HaVotatoManager();
+	private static GiocoManager model_gioco = new  GiocoManager();
+	
        
 
     public VoteGame() {
@@ -31,13 +40,19 @@ public class VoteGame extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		int idGioco = Integer.parseInt(request.getParameter("id_gioco"));
+		
+		
 		
 		try {
 			
-			int idVotazione = Integer.parseInt(request.getParameter("idVotazione"));
-			Valutazione v = modelValutazione.doRetrieveByKey(idVotazione);
+			Gioco gioco = model_gioco.doRetrieveByKey(idGioco);
+			Valutazione v = modelValutazione.doRetrieveByKey(gioco.getValutazione());
+			System.out.println("valutazione : "+v);
 			
 			if (v != null) {
+				
+				
 				
 				//VARIABILI INSERITE DALL'UTENTE
 				int ga = Integer.parseInt(request.getParameter("gameplay"));
@@ -50,6 +65,7 @@ public class VoteGame extends HttpServlet {
 				int ri = Integer.parseInt(request.getParameter("rigiocabilita"));
 				int di = Integer.parseInt(request.getParameter("difficolta"));
 				
+				
 				//VARIABILI PRESENTI NELLA VOTAZIONE
 				int gameplay = v.getGameplay();
 				int trama = v.getTrama();
@@ -60,6 +76,8 @@ public class VoteGame extends HttpServlet {
 				int realismo = v.getRealismo();
 				int rigiocabilita = v.getRigiocabilita();
 				int difficolta = v.getDifficolta();
+				
+				System.out.println(gameplay+trama+grafica+creativita+innovazione+coinvolgimento+realismo+rigiocabilita+difficolta);
 				
 				
 				if (gameplay == 0) {
@@ -74,9 +92,6 @@ public class VoteGame extends HttpServlet {
 					v.setRigiocabilita(ri);
 					v.setDifficolta(di);
 					v.addCounter();
-					modelValutazione.doUpdate(v);
-					session.setAttribute("message", "valutazione inserita");
-					response.sendRedirect("presentation/game-info.jsp");
 				} else {
 					
 					int counter = v.getCounter();
@@ -90,18 +105,24 @@ public class VoteGame extends HttpServlet {
 					v.setRigiocabilita(((rigiocabilita * counter) + ri) / (counter + 1));
 					v.setDifficolta(((difficolta * counter) + di) / (counter + 1));
 					v.addCounter();
-					modelValutazione.doUpdate(v);
-					session.setAttribute("message", "valutazione inserita");
-					response.sendRedirect("presentation/game-info.jsp");
-					
 				}
+				GeneralUser user = (GeneralUser)session.getAttribute("user");
+				modelValutazione.doUpdate(v);
+				model_haVotato.salvaVotazione(user.getUsername(), idGioco);
+				session.setAttribute("message", "Valutazione inserita");
+				response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
 
 			}
 			
-		} catch(SQLException | NumberFormatException e) {
+		} catch(SQLException e) {
 			System.out.println("Error:" + e.getMessage());
-			request.getSession().setAttribute("error", e.getMessage());
-			
+			session.setAttribute("message", e.getMessage());
+			response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
+		}
+		catch(NumberFormatException e) {
+			System.out.println("Error:" + e.getMessage());
+			session.setAttribute("message", e.getMessage());
+			response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
 		}
 		
 	}

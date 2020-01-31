@@ -169,7 +169,7 @@ public class Valutazione {
 	public String toString() {
 		return "Valutazione [id =" + id + ", gameplay=" + gameplay + ", trama=" + trama + ", grafica=" + grafica
 				+", creativita=" + creativita + ", innovazione=" + innovazione + ", coinvolgimento=" + coinvolgimento
-				+ "realismo=" + realismo + ", rigiocabilita=" + rigiocabilita + ", difficolta=" + difficolta + "]";
+				+ "realismo=" + realismo + ", rigiocabilita=" + rigiocabilita + ", difficolta=" + difficolta + ", counter="+counter+"]";
 	}
 
 	
