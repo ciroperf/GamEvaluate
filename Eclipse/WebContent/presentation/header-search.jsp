@@ -61,9 +61,20 @@
 			xhr.open("get","/GamEvaluate/selectfiller?target=platform&for_filters=1",true);
 			xhr.send(); 
 		}
+		function fillSidebar() {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				document.getElementById("sidenav").innerHTML = xhr.responseText;
+			}
+			};
+			xhr.open("get","/GamEvaluate/fillsidebar",true);
+			xhr.send(); 
+		}
 		function fillHome() {
 			fillSelectGenre();
 			fillSelectPlatform();
+			fillSidebar();
 			doSearch();
 			$('#group-vote button').on('click', function() {
 			    var thisBtn = $(this);
@@ -161,7 +172,6 @@
 	</script>
 	<div class="header-container">
 		<a class ="header-img" href="/GamEvaluate/presentation/home.jsp"><img lt="File not found" src="/GamEvaluate/images/logo-lungo.png"></a>
-		<a href="/GamEvaluate/logout">Logout</a>
 		<div class="search-container ">
 			<div class="active-black-3 active-black-4 mb-4 searchbar">
   				<input oninput="doSearch()" id="searchbar" class="form-control" type="text" placeholder="Search" aria-label="Search">

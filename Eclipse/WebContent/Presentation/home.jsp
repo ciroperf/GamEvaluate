@@ -19,12 +19,36 @@
 <title>GamEvaluate</title>
 </head>
 <body onload="fillHome()">
+<script>
+	function sidenavClicked(id) {
+		console.log(id);
+		var btn_margin;
+		if(document.getElementById("sidebar-container").classList.contains('sidebar-container-closed')) {
+			document.getElementById("sidebar-container").classList.remove('sidebar-container-closed');
+			var int_margin = parseInt(document.getElementById("sidebar-container").offsetHeight);
+			console.log(int_margin);
+			btn_margin = (int_margin+189)+'px';
+			document.getElementById(id).style.marginTop = btn_margin;
+		} else {
+			document.getElementById("sidebar-container").classList.add('sidebar-container-closed');
+			btn_margin = "189px";
+			console.log(btn_margin);
+			document.getElementById(id).style.marginTop = btn_margin;
+		}
+		
+	}
+	
+</script>
 <div class="site-container">
 <%@include file="/presentation/header-search.jsp" %>
 <div class="content-container"></div>
-<div id="content">
+<div id='sidebar-container' class='sidebar-container sidebar-container-closed'>
+	<div id="sidenav" class='sidenav'>
 		
 	</div>
+</div>
+<button id="btn-sidenav" onclick="sidenavClicked(this.id)" class='sidebar-button'></button>
+<div id="content"></div>
 <%@include file="/presentation/footer.jsp" %>
 </div>
 </body>
