@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import gamevaluate.bean.GeneralUser;
 import gamevaluate.bean.Recensione;
 import gamevaluate.model.RecensioneManager;
 
@@ -36,14 +37,15 @@ public class AddReview extends HttpServlet {
 			
 			String testo = request.getParameter("testo");
 			int idGioco = Integer.parseInt(request.getParameter("idGioco"));
-			String username = request.getParameter("username");
+			GeneralUser user = (GeneralUser) session.getAttribute("user");
+			String username = user.getUsername();
 			
 			if (testo.length() != 0 && testo.length() < 2000) {
 			
 				Recensione r = new Recensione(testo, idGioco, username);
 				model.doSave(r);
-				session.setAttribute("message", "recensione inserita");
-				response.sendRedirect("presentation/game-info.jsp");
+				session.setAttribute("message", "Recensione inserita");
+				response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
 				
 			}
 
