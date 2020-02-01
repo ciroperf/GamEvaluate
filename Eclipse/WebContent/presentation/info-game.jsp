@@ -181,7 +181,7 @@
 					+"<p>Gioco : "+gioco.nome+"</p>"
 					+"<p>Data : "+recensioni[i].data+"</p>";
 						if(recensioni[i].username == '<%=username%>' || <%=role%> == 2 || <%=role%> == 3)
-							text += "<form action=\"/GamEvaluate/DelReview\" class = \"del-button-container\">"
+							text += "<form action=\"/GamEvaluate/user/DelReview\" class = \"del-button-container\">"
 						  +	"<input type = \"hidden\" value = '"+recensioni[i].gioco+"' name = idGioco>"
 						  +	"<input type = \"hidden\" value = '"+recensioni[i].username+"' name = username>"
 						  +	"<input type = \"hidden\" value = '"+recensioni[i].data+"' name = data>"
@@ -218,8 +218,13 @@
 				if(xhr.readyState == 4 && xhr.status == 200) {
 					location.reload();
 				}};
-			xhr.open("get","/GamEvaluate/votegame?"+body,true);
+			xhr.open("get","/GamEvaluate/user/votegame?"+body,true);
 			xhr.send();
+		}
+		function undoDeleteReview() {
+			var richiesta = window.confirm("Sei sicuro di voler eliminare la recensione?");
+			
+			return richiesta;
 		}
 		function addReviewClicked() {
 			var text = "<div class='header-review'>"
@@ -231,7 +236,7 @@
 			+ "</div>"
 			+ "</div>"
 			+ "<div class='review-form'>"
-			+ "<form method='post' action='/GamEvaluate/AddReview'>"
+			+ "<form method='post' action='/GamEvaluate/user/AddReview'>"
 			+ "<input type='hidden' name='idGioco' value='"+<%=id_gioco%>+"'>"
 			+ "<div class=\"form-group\">"
 		    + "<label for=\"review-textarea\">Testo recensione : </label>"

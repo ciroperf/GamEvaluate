@@ -14,7 +14,7 @@ import gamevaluate.model.GeneralUserManager;
 import gamevaluate.utilities.Md5Encoder;
 
 
-@WebServlet("/ModifyPass")
+@WebServlet("/user/ModifyPass")
 public class ModifyPass extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static GeneralUserManager model = new GeneralUserManager();

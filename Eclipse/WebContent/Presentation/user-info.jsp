@@ -104,7 +104,7 @@
 			if (user.getRole() >= 2 && !yourPage && otherUser.getRole()== 1) {
 				if (otherUser.isBanned()) {
 		%>
-					<form method="get" action="/GamEvaluate/Unban" >
+					<form method="get" action="/GamEvaluate/moderator/Unban" >
 						<input type = "hidden" value= "<%= user.getRole()%>" name = "unbanningUser">
 						<input type = "hidden" value= "<%= otherUser.getUsername()%>" name = "username">
 						<div class="input-group-btn">
@@ -112,7 +112,7 @@
      					</div>
 					</form>
 		<%	} else {%>			
-					<form method="get" action="/GamEvaluate/Ban">
+					<form method="get" action="/GamEvaluate/moderator/Ban">
 						<input type = "hidden" value= "<%= user.getRole()%>" name = "banningUser">
 						<input type = "hidden" value= "<%= otherUser.getUsername()%>" name = "username">
 						<div class="input-group-btn">
@@ -126,7 +126,7 @@
 			if (user.getRole() == 3 && !yourPage && otherUser.getRole()!=3) { 
 				if (role == 1) {
 		%>
-					<form method="get" action="/GamEvaluate/Upgrade" >
+					<form method="get" action="/GamEvaluate/admin/Upgrade" >
 						<input type = "hidden" value= "<%= otherUser.getUsername()%>" name = "username">
 						<div class="input-group-btn">
       						<button class="btn btn-default" type="submit">Upgrade</button>
@@ -135,7 +135,7 @@
 		<%	
 				} else if (role == 2) {
 		%>
-					<form method="get" action="/GamEvaluate/Downgrade" >
+					<form method="get" action="/GamEvaluate/admin/Downgrade" >
 						<input type = "hidden" value= "<%= otherUser.getUsername()%>" name = "username">
 						<div class="input-group-btn">
       						<button class="btn btn-default" type="submit">Downgrade</button>
@@ -169,7 +169,7 @@
 			if ((user.getRole() >= 2 || yourPage) && (otherUser.getRole()!= 3 || yourPage)) {
 				
 		%>
-				<form action="/GamEvaluate/DelReview" class = "del-button-container">
+				<form action="/GamEvaluate/user/DelReview" class = "del-button-container">
 					<input type = "hidden" value = "<%=recensioni.get(i).getGioco()%>" name = idGioco>
 					<input type = "hidden" value = "<%=recensioni.get(i).getUsername()%>" name = username>
 					<input type = "hidden" value = "<%=recensioni.get(i).getData()%>" name = data>

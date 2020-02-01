@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import gamevaluate.model.GiocoManager;
 
 
-@WebServlet("/DelGame")
+@WebServlet("/admin/DelGame")
 public class DelGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GiocoManager model = new GiocoManager();
@@ -33,7 +33,7 @@ public class DelGame extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("idgioco"));
 			model.doDelete(id);
 			session.setAttribute("message", "gioco eliminato");
-			response.sendRedirect("presentation/home.jsp");
+			response.sendRedirect("/GamEvaluate/presentation/home.jsp");
 			
 		} catch(SQLException | NumberFormatException e) {
 			System.out.println("Error:" + e.getMessage());

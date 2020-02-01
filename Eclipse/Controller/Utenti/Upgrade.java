@@ -16,7 +16,7 @@ import gamevaluate.model.GeneralUserManager;
 /**
  * Servlet implementation class Upgrade
  */
-@WebServlet("/Upgrade")
+@WebServlet("/admin/Upgrade")
 public class Upgrade extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GeneralUserManager model = new GeneralUserManager();

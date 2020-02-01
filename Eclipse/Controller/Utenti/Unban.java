@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import gamevaluate.bean.GeneralUser;
 import gamevaluate.model.GeneralUserManager;
 
-@WebServlet("/Unban")
+@WebServlet("/moderator/Unban")
 public class Unban extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GeneralUserManager model = new GeneralUserManager();

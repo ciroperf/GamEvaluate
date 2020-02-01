@@ -1,4 +1,4 @@
-package gamevaluate.controller.gestioneRicerca;
+package gamevaluate.controller.gestionericerca;
 
 import java.io.IOException;
 import java.sql.SQLException;

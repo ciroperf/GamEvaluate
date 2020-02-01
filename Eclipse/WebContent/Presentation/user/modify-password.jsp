@@ -5,13 +5,7 @@
     
     GeneralUser user = (GeneralUser)session.getAttribute("user");
 	String message = (String)session.getAttribute("message");
-	
-	if (user == null) {
-		response.sendRedirect("/GamEvaluate/presentation/home.jsp");
-		return;
-	} else {
-		String password = user.getPassword();
-	}
+	String password = user.getPassword();
     
     %>
 <!DOCTYPE html>
@@ -52,7 +46,7 @@
 	<div class="content-container"></div>
 	<div id="content">
 	
-	<form class="form-group pass-container" method="post" action="/GamEvaluate/ModifyPass">
+	<form class="form-group pass-container" method="post" action="/GamEvaluate/user/ModifyPass">
 	<p>La password deve essere di almeno 5 caratteri</p>
 	<input type = "hidden" value = <%= user.getUsername() %> name = username>
 	<div class="form-group">

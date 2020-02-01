@@ -12,7 +12,7 @@ import gamevaluate.bean.GeneralUser;
 import gamevaluate.model.GeneralUserManager;
 
 
-@WebServlet("/Downgrade")
+@WebServlet("/admin/Downgrade")
 public class Downgrade extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GeneralUserManager model = new GeneralUserManager();

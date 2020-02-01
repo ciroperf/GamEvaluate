@@ -18,7 +18,7 @@ import gamevaluate.model.RecensioneManager;
 /**
  * Servlet implementation class DelReview
  */
-@WebServlet("/DelReview")
+@WebServlet("/user/DelReview")
 public class DelReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static RecensioneManager model = new RecensioneManager();
@@ -52,7 +52,7 @@ public class DelReview extends HttpServlet {
 			
 			session.removeAttribute("recensioni");
 			session.setAttribute("recensioni", recensioni);
-			session.setAttribute("message", "recensione eliminata");
+			session.setAttribute("message", "Recensione eliminata");
 			response.sendRedirect(returnTo);
 			
 

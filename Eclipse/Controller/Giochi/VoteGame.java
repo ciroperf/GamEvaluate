@@ -18,7 +18,7 @@ import gamevaluate.model.HaVotatoManager;
 import gamevaluate.model.ValutazioneManager;
 
 
-@WebServlet("/votegame")
+@WebServlet("/user/votegame")
 public class VoteGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static ValutazioneManager modelValutazione = new  ValutazioneManager();
@@ -110,19 +110,19 @@ public class VoteGame extends HttpServlet {
 				modelValutazione.doUpdate(v);
 				model_haVotato.salvaVotazione(user.getUsername(), idGioco);
 				session.setAttribute("message", "Valutazione inserita");
-				response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
+				response.sendRedirect("/GamEvaluate/presentation/info-game.jsp?gioco="+idGioco);
 
 			}
 			
 		} catch(SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 			session.setAttribute("message", e.getMessage());
-			response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
+			response.sendRedirect("/GamEvaluate/presentation/info-game.jsp?gioco="+idGioco);
 		}
 		catch(NumberFormatException e) {
 			System.out.println("Error:" + e.getMessage());
 			session.setAttribute("message", e.getMessage());
-			response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
+			response.sendRedirect("/GamEvaluate/presentation/info-game.jsp?gioco="+idGioco);
 		}
 		
 	}

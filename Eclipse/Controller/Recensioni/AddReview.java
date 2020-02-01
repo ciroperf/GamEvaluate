@@ -15,7 +15,7 @@ import gamevaluate.bean.Recensione;
 import gamevaluate.model.RecensioneManager;
 
 
-@WebServlet("/AddReview")
+@WebServlet("/user/AddReview")
 public class AddReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static RecensioneManager model = new RecensioneManager();
@@ -45,7 +45,7 @@ public class AddReview extends HttpServlet {
 				Recensione r = new Recensione(testo, idGioco, username);
 				model.doSave(r);
 				session.setAttribute("message", "Recensione inserita");
-				response.sendRedirect("presentation/info-game.jsp?gioco="+idGioco);
+				response.sendRedirect("/GamEvaluate/presentation/info-game.jsp?gioco="+idGioco);
 				
 			}
 

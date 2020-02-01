@@ -16,7 +16,7 @@ import gamevaluate.model.GeneralUserManager;
 /**
  * Servlet implementation class Ban
  */
-@WebServlet("/Ban")
+@WebServlet("/moderator/Ban")
 public class Ban extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GeneralUserManager model = new GeneralUserManager();
