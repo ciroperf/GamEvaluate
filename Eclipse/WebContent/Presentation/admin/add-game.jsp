@@ -65,8 +65,8 @@
 %>
 
 <script type="text/javascript">
-	var genere;
-	var piattaforma;
+	var genere = "";
+	var piattaforma = "";
 	function fillSelectGenre() {
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
@@ -184,7 +184,7 @@
 
 		function checkImage(url) {
 			var max_height = 512;
-			var max_width = 350;
+			var max_width = 512;
 			var w;
 			var h;
 			var img = new Image;

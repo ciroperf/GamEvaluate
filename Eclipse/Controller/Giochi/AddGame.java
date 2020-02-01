@@ -22,10 +22,10 @@ public class AddGame extends HttpServlet {
 	private static GenereManager genereModel = new GenereManager();
 	private static PiattaformaManager piattaformaModel = new PiattaformaManager();
 	private static ValutazioneManager valutazioneModel = new ValutazioneManager();
-       
-    public AddGame() {
-        super();
-    }
+
+	public AddGame() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -34,37 +34,37 @@ public class AddGame extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		
+
+
 		HttpSession session = request.getSession();
-		
+
 		try {
-			
+
 			boolean valid = true;
 			Valutazione v = new Valutazione();
 			String nome = request.getParameter("nome");
 			String descrizione = request.getParameter("descrizione");
+
 			String genere = request.getParameter("genere");
+
+			if (genere.equals("")) {
+				session.setAttribute("message", "Errore : genere o piattaforma non selezionati");
+				valid = false;
+			}
+
 			String piattaforma = request.getParameter("piattaforma");
+
+			if (piattaforma.equals("")) {
+				session.setAttribute("message", "Errore : genere o piattaforma non selezionati");
+				valid = false;
+			}
+
 			String immagine = request.getParameter("immagine");
-			genere = genere.substring(0,genere.length()).toUpperCase();
 			nome = nome.substring(0,1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase();
-			piattaforma = piattaforma.substring(0,1).toUpperCase() + piattaforma.substring(1, piattaforma.length()).toLowerCase();
-			
-			if (genereModel.doRetrieveByKey(genere) == null) {
-				System.out.println("Errore genere non esistente nel db");
-				valid = false;
-			}
-			
-			if (piattaformaModel.doRetrieveByKey(piattaforma) == null) {
-				System.out.println("Errore piattaforma non esistente nel db");
-				valid = false;
-			}
-			
-			if (valid) {
-			
+
+			if(valid) {
 				Gioco gioco = new Gioco(nome, descrizione, immagine, genere, piattaforma);
-		        giocoModel.doSave(gioco);
+				giocoModel.doSave(gioco);
 				int idGioco = giocoModel.getLastId();
 				if (idGioco == -1)
 					System.out.println("Errore id gioco");
@@ -75,13 +75,13 @@ public class AddGame extends HttpServlet {
 					gioco.setValutazione(idGioco);
 					giocoModel.doUpdate(gioco);
 					session.setAttribute("message", "gioco aggiunto");
-					response.sendRedirect("presentation/admin/add-game.jsp");
 				}
 			}
+			response.sendRedirect("/GamEvaluate/presentation/admin/add-game.jsp");
 		} catch (SQLException | NumberFormatException e) {
 			System.out.println("Error:" + e.getMessage());
 			request.getSession().setAttribute("message", e.getMessage());
-			
+
 		}
 
 	}
