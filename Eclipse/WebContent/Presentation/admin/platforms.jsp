@@ -48,7 +48,7 @@
 <body>
 
 <script type="text/javascript">
-	var piattaforma;
+	var piattaforma = "";
 	function fillSelectPlatform() {
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {

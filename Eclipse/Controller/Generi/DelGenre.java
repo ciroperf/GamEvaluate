@@ -33,10 +33,11 @@ public class DelGenre extends HttpServlet {
 		try {
 			
 			String nome = request.getParameter("nome");
+			if (!nome.equals("")) {
 			nome = nome.substring(0,1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase();
 			Genere genere = modelGenere.doRetrieveByKey(nome);
 			boolean find = false;
-			if (genere != null) {
+			
 				
 				ArrayList<Gioco> giochi = (ArrayList<Gioco>) modelGioco.doRetrieveAll("");
 				
@@ -56,7 +57,7 @@ public class DelGenre extends HttpServlet {
 				}
 			} else {
 				
-				request.getSession().setAttribute("message", "Genere null");
+				request.getSession().setAttribute("message", "Genere non inserito");
 				response.sendRedirect("/GamEvaluate/presentation/admin/genres.jsp");
 			}	
 			

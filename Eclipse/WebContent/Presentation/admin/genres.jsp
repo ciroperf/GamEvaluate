@@ -48,7 +48,7 @@
 <body>
 
 <script type="text/javascript">
-	var genere;
+	var genere = "";
 	function fillSelectGenre() {
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function() {

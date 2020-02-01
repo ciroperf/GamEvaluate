@@ -61,9 +61,14 @@ public class Login extends HttpServlet {
 				String err="Errore : username/password errati";
 				session.setAttribute("message", err);
 				response.sendRedirect("presentation/login.jsp");
-			} else {
+			} else if (!user.isBanned()){
 				session.setAttribute("user", user);
 				response.sendRedirect("presentation/home.jsp");
+			} else {
+				
+				String err="Errore : utente bannato";
+				session.setAttribute("message", err);
+				response.sendRedirect("presentation/login.jsp");
 			}
 		} catch (SQLException e) {
 			System.out.println("Errore retrieveByKey : "+ e.getMessage());

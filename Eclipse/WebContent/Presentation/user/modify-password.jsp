@@ -51,11 +51,11 @@
 	<input type = "hidden" value = <%= user.getUsername() %> name = username>
 	<div class="form-group">
     	<label for="pwd">Password:</label>
-    	<input type="password" class="form-control" pattern=".{5,}" name = "password1" id = "password1">
+    	<input type="password" class="form-control" pattern=".{5,}" name = "password1" id = "password1" style = "font-size: 18px;">
   	</div>
   	<div class="form-group">
     	<label for="pwd">Conferma password:</label>
-    	<input type="password" class="form-control" pattern=".{5,}" name = "password2" id = "password2">
+    	<input type="password" class="form-control" pattern=".{5,}" name = "password2" id = "password2" style = "font-size: 18px;">
   	</div>
   	<div class="checkbox">
    	 	<label><input type="checkbox" onclick="showPassword()">Show password</label>
