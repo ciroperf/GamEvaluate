@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import gamevaluate.bean.Gioco;
 import gamevaluate.model.GiocoManager;
 
-@WebServlet("/ModifyGame")
+@WebServlet("/admin/ModifyGame")
 public class ModifyGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GiocoManager model = new GiocoManager();
@@ -40,7 +40,7 @@ public class ModifyGame extends HttpServlet {
 			String genere = request.getParameter("genere");
 			String piattaforma = request.getParameter("piattaforma");
 			String immagine = request.getParameter("immagine");
-			genere = genere.substring(0,1).toUpperCase() + genere.substring(1, genere.length()).toLowerCase();
+			genere = genere.substring(0,genere.length()).toUpperCase();
 			nome = nome.substring(0,1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase();
 			piattaforma = piattaforma.substring(0,1).toUpperCase() + piattaforma.substring(1, piattaforma.length()).toLowerCase();
 			
@@ -52,7 +52,7 @@ public class ModifyGame extends HttpServlet {
 			g.setImmagine(immagine);
 			model.doUpdate(g);
 			session.setAttribute("message", "modificato");
-			response.sendRedirect("presentation/home.jsp");
+			response.sendRedirect("/GamEvaluate/presentation/admin/modify-game.jsp?gioco=" + g.getId());
 
 		} catch (SQLException | NumberFormatException e) {
 			System.out.println("Error:" + e.getMessage());

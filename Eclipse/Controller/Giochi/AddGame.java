@@ -47,7 +47,7 @@ public class AddGame extends HttpServlet {
 			String genere = request.getParameter("genere");
 			String piattaforma = request.getParameter("piattaforma");
 			String immagine = request.getParameter("immagine");
-			genere = genere.substring(0,1).toUpperCase() + genere.substring(1, genere.length()).toLowerCase();
+			genere = genere.substring(0,genere.length()).toUpperCase();
 			nome = nome.substring(0,1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase();
 			piattaforma = piattaforma.substring(0,1).toUpperCase() + piattaforma.substring(1, piattaforma.length()).toLowerCase();
 			
@@ -75,12 +75,12 @@ public class AddGame extends HttpServlet {
 					gioco.setValutazione(idGioco);
 					giocoModel.doUpdate(gioco);
 					session.setAttribute("message", "gioco aggiunto");
-					response.sendRedirect("presentation/home.jsp");
+					response.sendRedirect("presentation/admin/add-game.jsp");
 				}
 			}
 		} catch (SQLException | NumberFormatException e) {
 			System.out.println("Error:" + e.getMessage());
-			request.getSession().setAttribute("error", e.getMessage());
+			request.getSession().setAttribute("message", e.getMessage());
 			
 		}
 

@@ -31,25 +31,21 @@ public class AddPlatform extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-		request.getSession().removeAttribute("error");
 		request.getSession().removeAttribute("message");
 		
 		try {
 			
 			String nome = request.getParameter("nome");
 			nome = nome.substring(0,1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase();
-			if (model.doRetrieveByKey(nome) != null) {
-				request.getSession().setAttribute("error", "Piattaforma già presente");
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/piattaforme.jsp");
-				rd.forward(request, response);
+			if (model.doRetrieveByKey(nome).getNome() != null) {
+				request.getSession().setAttribute("message", "Piattaforma già presente");
+				response.sendRedirect("presentation/admin/platforms.jsp");
 			} else {
 				
 				Piattaforma p = new Piattaforma(nome);
 				model.doSave(p);
 				request.getSession().setAttribute("message", "Piattaforma Aggiunta");
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/piattaforme.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("presentation/admin/platforms.jsp");
 				
 			}
 		} catch (SQLException | NumberFormatException e) {

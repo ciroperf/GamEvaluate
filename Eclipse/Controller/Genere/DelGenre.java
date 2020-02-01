@@ -3,7 +3,6 @@ package gamevaluate.controller.gestioneGeneri;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,25 +47,21 @@ public class DelGenre extends HttpServlet {
 				}
 				
 				if (find) {
-					request.getSession().setAttribute("error", "Impossibile eliminare genere: sono presenti giochi con tale genere");
-					RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-					rd.forward(request, response);
+					request.getSession().setAttribute("message", "Impossibile eliminare genere: sono presenti giochi con tale genere");
+					response.sendRedirect("/GamEvaluate/presentation/admin/genres.jsp");
 				} else {
 					modelGenere.doDelete(nome);
 					request.getSession().setAttribute("message", "Genere eliminato");
-					RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-					rd.forward(request, response);
+					response.sendRedirect("/GamEvaluate/presentation/admin/genres.jsp");
 				}
 			} else {
 				
-				request.getSession().setAttribute("error", "Genere null");
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-				rd.forward(request, response);
+				request.getSession().setAttribute("message", "Genere null");
+				response.sendRedirect("/GamEvaluate/presentation/admin/genres.jsp");
 			}	
 			
 		} catch (SQLException | NumberFormatException e) {
 			System.out.println("Error:" + e.getMessage());
-			request.getSession().setAttribute("error", e.getMessage());
 			
 		}
 	}

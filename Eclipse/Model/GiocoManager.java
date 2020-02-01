@@ -96,7 +96,7 @@ public class GiocoManager {
 		PreparedStatement preparedStatement = null;
 		String insertSQL = "INSERT INTO " + TABLE_NAME + 
 				" (Nome, Descrizione, Immagine, Genere, Piattaforma)" +
-				" VALUES(?, ?, ?, ?, ?, ?)";
+				" VALUES(?, ?, ?, ?, ?)";
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
@@ -155,8 +155,8 @@ public class GiocoManager {
 		PreparedStatement preparedStatement = null;
 
 		String updateSQL = "UPDATE " + TABLE_NAME + " SET " +
-				"ID_Gioco = ?, Nome = ?, Descrizione = ?, Immagine = ?, Genere ?" +
-				"Piattaforma = ?, ID_Valutazione = ?" +
+				"ID_Gioco = ?, Nome = ?, Descrizione = ?, Immagine = ?, Genere= ?, " +
+				"Piattaforma = ?, ID_Valutazione = ? " +
 				"WHERE ID_Gioco = ?";
 		
 

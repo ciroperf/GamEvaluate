@@ -29,7 +29,6 @@ public class DelPlatform extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getSession().removeAttribute("error");
 		request.getSession().removeAttribute("message");
 		
 		try {
@@ -48,20 +47,17 @@ public class DelPlatform extends HttpServlet {
 				}
 				
 				if (find) {
-					request.getSession().setAttribute("error", "Impossibile eliminare piattaforma: sono presenti piattaforme con tale genere");
-					RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-					rd.forward(request, response);
+					request.getSession().setAttribute("message", "Impossibile eliminare piattaforma: sono presenti piattaforme con tale genere");
+					response.sendRedirect("presentation/admin/platforms.jsp");
 				} else {
 					modelPiattaforma.doDelete(nome);
 					request.getSession().setAttribute("message", "piattaforma eliminata");
-					RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-					rd.forward(request, response);
+					response.sendRedirect("presentation/admin/platforms.jsp");
 				}
 			} else {
 				
 				request.getSession().setAttribute("error", "Piattaforma null");
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("presentation/admin/platforms.jsp");
 			}
 			
 		} catch (SQLException | NumberFormatException e) {

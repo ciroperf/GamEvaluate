@@ -28,30 +28,26 @@ public class AddGenre extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 					
-		request.getSession().removeAttribute("error");
 		request.getSession().removeAttribute("message");
 		
 		try {
 			
 			String nome = request.getParameter("nome");
-			nome = nome.substring(0,1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase();
-			if (model.doRetrieveByKey(nome) != null) {
-				request.getSession().setAttribute("error", "Genere già presente");
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-				rd.forward(request, response);
+			nome = nome.substring(0, nome.length()).toUpperCase();
+			if (model.doRetrieveByKey(nome).getNome() != null) {
+				request.getSession().setAttribute("message", "Genere già presente");
+				response.sendRedirect("presentation/admin/genres.jsp");
 			} else {
 				
 				String descrizione = request.getParameter("descrizione");
 				Genere g = new Genere(nome, descrizione);
 				model.doSave(g);
 				request.getSession().setAttribute("message", "Genere Aggiunto");
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/generi.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("presentation/admin/genres.jsp");
 			}	
 			
 		} catch (SQLException | NumberFormatException e) {
 			System.out.println("Error:" + e.getMessage());
-			request.getSession().setAttribute("error", e.getMessage());
 			
 		}
 			
