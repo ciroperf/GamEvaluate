@@ -15,7 +15,7 @@ import gamevaluate.model.GiocoManager;
 import gamevaluate.model.PiattaformaManager;
 
 
-@WebServlet("/DelPlatform")
+@WebServlet("/admin/DelPlatform")
 public class DelPlatform extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -48,16 +48,16 @@ public class DelPlatform extends HttpServlet {
 				
 				if (find) {
 					request.getSession().setAttribute("message", "Impossibile eliminare piattaforma: sono presenti piattaforme con tale genere");
-					response.sendRedirect("presentation/admin/platforms.jsp");
+					response.sendRedirect("/GamEvaluate/presentation/admin/platforms.jsp");
 				} else {
 					modelPiattaforma.doDelete(nome);
 					request.getSession().setAttribute("message", "piattaforma eliminata");
-					response.sendRedirect("presentation/admin/platforms.jsp");
+					response.sendRedirect("/GamEvaluate/presentation/admin/platforms.jsp");
 				}
 			} else {
 				
 				request.getSession().setAttribute("error", "Piattaforma null");
-				response.sendRedirect("presentation/admin/platforms.jsp");
+				response.sendRedirect("/GamEvaluate/presentation/admin/platforms.jsp");
 			}
 			
 		} catch (SQLException | NumberFormatException e) {

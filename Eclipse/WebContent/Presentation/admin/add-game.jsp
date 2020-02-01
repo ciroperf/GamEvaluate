@@ -116,7 +116,7 @@
 			<div class="add-game">
 				<div class="game-data">
 					<form class="form-group game-container" method="post"
-						action="/GamEvaluate/AddGame">
+						action="/GamEvaluate/admin/AddGame">
 						<p>Aggiungi Gioco</p>
 						<div class="form-group">
 							<label for="nome">Nome:</label> <input type="text"

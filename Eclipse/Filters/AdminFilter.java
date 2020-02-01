@@ -46,6 +46,7 @@ public class AdminFilter implements Filter {
 			if((utente != null) && (utente.getRole() == 3)) {
 				chain.doFilter(request, response);
 			} else {
+				session.setAttribute("message", "Operazione vietata!");
 				hresponse.sendRedirect("/GamEvaluate/presentation/home.jsp");
 			}
 		} else {

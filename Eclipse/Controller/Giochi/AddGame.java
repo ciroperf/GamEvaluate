@@ -15,7 +15,7 @@ import gamevaluate.model.GiocoManager;
 import gamevaluate.model.PiattaformaManager;
 import gamevaluate.model.ValutazioneManager;
 
-@WebServlet("/AddGame")
+@WebServlet("/admin/AddGame")
 public class AddGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GiocoManager giocoModel = new GiocoManager();

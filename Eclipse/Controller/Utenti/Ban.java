@@ -37,8 +37,6 @@ public class Ban extends HttpServlet {
 			
 			GeneralUser u = model.doRetrieveByKey(username);
 			
-			System.out.println(username);
-			System.out.println(u);
 			
 			if (banningUser == 2 && u.getRole() == 2) {
 				session.setAttribute("message", "Un moderatore non può bannare/unbannare un altro moderatore");

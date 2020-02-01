@@ -264,3 +264,21 @@
 	font-size : 30px;
 	color : #DD0B0B;
 }
+
+.del-button-container {
+	
+	text-align: right;
+	display : flex;
+	flex-direction: column;
+	
+}
+
+.delete-img {
+	height : 50px;
+	margin : auto;
+}
+
+.modify-img {
+	height : 65px;
+	margin : auto;
+}

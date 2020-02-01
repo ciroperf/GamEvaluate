@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div class="header-container">
-		<div class = 'alert'>
 			<%!String nota;%>
 			<%
 				if (session.getAttribute("message") != null) {
@@ -20,7 +19,6 @@
 			<%
 					session.removeAttribute("message"); }
 			%>
-			</div>
 		<a class ="header-img" href="/GamEvaluate/presentation/home.jsp"><img alt="File not found" src="/GamEvaluate/images/logo-lungo.png"></a>
 	</div>
 </body>

@@ -47,6 +47,7 @@ public class ModeratorFilter implements Filter {
 			if((utente != null) && (utente.getRole() > 1)) {
 				chain.doFilter(request, response);
 			} else {
+				session.setAttribute("message", "Operazione vietata!");
 				hresponse.sendRedirect("/GamEvaluate/presentation/home.jsp");
 			}
 		} else {

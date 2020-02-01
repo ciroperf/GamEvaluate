@@ -1,6 +1,11 @@
 package gamevaluate.filters;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -19,12 +24,12 @@ import gamevaluate.bean.GeneralUser;
  * Servlet Filter implementation class FiltroGuest
  */
 @WebFilter(urlPatterns = { "/user/*"})
-public class FiltroGuest implements Filter {
+public class BannedFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public FiltroGuest() {
+    public BannedFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -39,15 +44,20 @@ public class FiltroGuest implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
 		HttpServletRequest hrequest = (HttpServletRequest) request;
 		HttpServletResponse hresponse = (HttpServletResponse) response;
 		HttpSession session = hrequest.getSession();
+		
+		 String path = hrequest.getRequestURI().substring(hrequest.getContextPath().length()).replaceAll("[/]+$", ""); 
+		
 		if(session != null) {
 			GeneralUser utente = (GeneralUser)session.getAttribute("user");
-			if((utente != null) && (utente.getRole() > 0)) {
+			if((utente != null) && !(utente.isBanned())) {
 				chain.doFilter(request, response);
 			} else {
-				session.setAttribute("message", "Operazione vietata!");
+				session.setAttribute("message", "Utente bannato!");
+				session.removeAttribute("user");
 				hresponse.sendRedirect("/GamEvaluate/presentation/login.jsp");
 			}
 		} else {

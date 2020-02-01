@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import gamevaluate.bean.Piattaforma;
 import gamevaluate.model.PiattaformaManager;
 
-@WebServlet("/AddPlatform")
+@WebServlet("/admin/AddPlatform")
 public class AddPlatform extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -39,13 +39,13 @@ public class AddPlatform extends HttpServlet {
 			nome = nome.substring(0,1).toUpperCase() + nome.substring(1, nome.length()).toLowerCase();
 			if (model.doRetrieveByKey(nome).getNome() != null) {
 				request.getSession().setAttribute("message", "Piattaforma già presente");
-				response.sendRedirect("presentation/admin/platforms.jsp");
+				response.sendRedirect("/GamEvaluate/presentation/admin/platforms.jsp");
 			} else {
 				
 				Piattaforma p = new Piattaforma(nome);
 				model.doSave(p);
 				request.getSession().setAttribute("message", "Piattaforma Aggiunta");
-				response.sendRedirect("presentation/admin/platforms.jsp");
+				response.sendRedirect("/GamEvaluate/presentation/admin/platforms.jsp");
 				
 			}
 		} catch (SQLException | NumberFormatException e) {

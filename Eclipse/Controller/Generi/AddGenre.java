@@ -12,7 +12,7 @@ import gamevaluate.bean.Genere;
 import gamevaluate.model.GenereManager;
 
 
-@WebServlet("/AddGenre")
+@WebServlet("/admin/AddGenre")
 public class AddGenre extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static GenereManager model = new GenereManager();
@@ -36,14 +36,14 @@ public class AddGenre extends HttpServlet {
 			nome = nome.substring(0, nome.length()).toUpperCase();
 			if (model.doRetrieveByKey(nome).getNome() != null) {
 				request.getSession().setAttribute("message", "Genere già presente");
-				response.sendRedirect("presentation/admin/genres.jsp");
+				response.sendRedirect("/GamEvaluate/presentation/admin/genres.jsp");
 			} else {
 				
 				String descrizione = request.getParameter("descrizione");
 				Genere g = new Genere(nome, descrizione);
 				model.doSave(g);
 				request.getSession().setAttribute("message", "Genere Aggiunto");
-				response.sendRedirect("presentation/admin/genres.jsp");
+				response.sendRedirect("/GamEvaluate/presentation/admin/genres.jsp");
 			}	
 			
 		} catch (SQLException | NumberFormatException e) {

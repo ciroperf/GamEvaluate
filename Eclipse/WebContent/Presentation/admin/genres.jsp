@@ -62,12 +62,12 @@
 	
 	function genereChanged(genre) {
       	genere = genre;
-      	document.getElementById("selected-genre").innerHTML = "Genere selezioato: " + genere;
+      	document.getElementById("selected-genre").innerHTML = "Genere selezionato: " + genere;
 	}
 	
 	function deleteGenre() {
 		
-		location.href = "/GamEvaluate/DelGenre?nome=" + genere;
+		location.href = "/GamEvaluate/admin/DelGenre?nome=" + genere;
 	}
 		
 </script>
@@ -78,7 +78,7 @@
 	<div id="content">
 	
 	<div id = "add">
-	<form class="form-group genre-container" method="post" action="/GamEvaluate/AddGenre">
+	<form class="form-group genre-container" method="post" action="/GamEvaluate/admin/AddGenre">
 	<p>Aggiungi genere</p>
 	<div class="form-group">
 	  <label for="nome">Nome:</label>
@@ -137,7 +137,7 @@
 			
 			var text = 
 			"<div id = \'add\'>"
-			+"<form class=\"form-group genre-container\" method=\"post\" action=\"/GamEvaluate/AddGenre\">"
+			+"<form class=\"form-group genre-container\" method=\"post\" action=\"/GamEvaluate/admin/AddGenre\">"
 			+"<p>Aggiungi genere</p>"
 			+"<div class=\"form-group\">"
 			+"<label for=\"nome\">Nome:</label>"

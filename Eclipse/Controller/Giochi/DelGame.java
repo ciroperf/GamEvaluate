@@ -22,15 +22,18 @@ public class DelGame extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		doPost(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("error");
 		session.removeAttribute("message");
+		int id = Integer.parseInt(request.getParameter("idgioco"));
 		
 		try {
 			
-			int id = Integer.parseInt(request.getParameter("idgioco"));
 			model.doDelete(id);
 			session.setAttribute("message", "gioco eliminato");
 			response.sendRedirect("/GamEvaluate/presentation/home.jsp");
@@ -40,12 +43,6 @@ public class DelGame extends HttpServlet {
 			request.getSession().setAttribute("error", e.getMessage());
 			
 		}
-
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

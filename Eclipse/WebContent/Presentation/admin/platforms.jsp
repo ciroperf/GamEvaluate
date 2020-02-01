@@ -68,7 +68,7 @@
 	
 	function deletePlatform() {
 		
-		location.href = "/GamEvaluate/DelPlatform?nome=" + piattaforma;
+		location.href = "/GamEvaluate/admin/DelPlatform?nome=" + piattaforma;
 	}
 		
 </script>
@@ -79,7 +79,7 @@
 	<div id="content">
 	
 	<div id = "add">
-	<form class="form-group platform-container" method="post" action="/GamEvaluate/AddPlatform">
+	<form class="form-group platform-container" method="post" action="/GamEvaluate/admin/AddPlatform">
 	<p>Aggiungi Piattaforma</p>
 	<div class="form-group">
 	  <label for="nome">Nome:</label>
@@ -134,7 +134,7 @@
 			
 			var text = 
 			"<div id = \'add\'>"
-			+"<form class=\"form-group platform-container\" method=\"post\" action=\"/GamEvaluate/AddPlatform\">"
+			+"<form class=\"form-group platform-container\" method=\"post\" action=\"/GamEvaluate/admin/AddPlatform\">"
 			+"<p>Aggiungi Piattaforma</p>"
 			+"<div class=\"form-group\">"
 			+"<label for=\"nome\">Nome:</label>"

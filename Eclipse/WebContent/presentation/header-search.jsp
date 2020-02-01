@@ -12,6 +12,25 @@
   .toggle.ios .toggle-handle { border-radius: 20rem; }
 </style>
 <body>
+	
+	<%GeneralUser user = (GeneralUser) session.getAttribute("user");
+		int role = 0;
+		if(user != null)
+			role = user.getRole();
+	%>
+	
+	<%!String nota;%>
+			<%
+				if (session.getAttribute("message") != null) {
+					nota = (String) session.getAttribute("message");
+			%>
+			<script type="text/javascript">
+     				 alert('<%=nota%>');
+  				</script>
+			<%
+					session.removeAttribute("message"); }
+			%>
+
 	<script>
 		var target = "giochi";
 		var valutazione = 0;
@@ -94,6 +113,11 @@
 			  });
 			
 		}
+		function undoDeleteGame() {
+			var richiesta = window.confirm("Sei sicuro di voler eliminare il gioco?");
+			
+			return richiesta;
+		}
 		function doSearch() {
 				var xhr2 = new XMLHttpRequest();
 				xhr2.onreadystatechange = function() {
@@ -157,8 +181,18 @@
 										+ "<div class='game-vote'>"
 										+ "<p class='vote-text'>Voto</p>"
 										+ "<div class='vote-container'><span>"+giochi[i].valutazione+"</span></div>"
-										+ "</div>"
-										+ "</div>"
+										+ "</div>");
+								if(<%=role%> == 3) {
+									text = text.concat("<form  action='/GamEvaluate/admin/DelGame' class = \"del-button-container\">"
+										  +	"<input type = \"hidden\" value = '"+giochi[i].id+"' name = idgioco>"
+										  +	"<input type=\"image\" class=\"delete-img\" alt=\"Image not found\" src=\"/GamEvaluate/images/delete-button.png\" onclick= \"return undoDeleteGame();\">"
+										  + "</form>");
+									text = text.concat("<form  action='/GamEvaluate/presentation/admin/modify-game.jsp' class = \"del-button-container\">"
+											  +	"<input type = \"hidden\" value = '"+giochi[i].id+"' name = gioco>"
+											  +	"<input type=\"image\" class=\"modify-img\" alt=\"Image not found\" src=\"/GamEvaluate/images/wrench.png\">"
+											  + "</form>");
+								}
+								text = text.concat("</div>"
 										+ "</div>");
 								text = text.concat("</div></a>");
 							}
