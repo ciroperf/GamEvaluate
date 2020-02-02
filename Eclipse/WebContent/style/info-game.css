@@ -1,0 +1,337 @@
+@charset "ISO-8859-1";
+
+
+.header-info-game {
+	width : 100%;
+	border-width : 0px 0px 2px 0px;
+	border-style : solid;
+	padding : 2%;
+	display : flex;
+	flex-direction: row;
+}
+
+.img-container {
+	flex-grow: 1;
+    margin-left: 5%;
+    padding: 3%;
+}
+
+.game-img {
+	height : 500px;
+	border-style : solid;
+	border-width : 2px;
+	margin : auto;
+}
+
+.main-info {
+	flex-grow : 4;
+	display : flex;
+	flex-direction: column;
+	margin : auto;
+	justify-content: center;
+}
+
+.main-info p {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.vote-div {
+	display : flex;
+	flex-direction: row;
+}
+
+.vote-container {
+	text-align : center;
+	width : 35%;
+	background-color: #000000;
+	border-radius : 50px 50px 50px 50px;
+	padding : 2%;
+}
+
+.vote-container p {
+	color : #E20000;
+	margin : auto;
+}
+
+.votazioni-attuali {
+	display : flex;
+	border-style : solid;
+	border-width : 1px;
+	flex-direction: column;
+	width : 80%;
+	margin-top : 2%;
+	background-color: #A63D3D;
+	padding : 2%;
+}
+
+.votazioni-attuali p {
+	font-size : 22px;
+}
+
+.description-container {
+	width : 100%;
+	border-width : 0px 0px 1px 0px;
+	border-style : solid;
+	display : flex;
+	flex-direction: column;	
+	padding : 2%;
+}
+
+.description-header {
+	margin-left : 3%;
+	font-size: 25px;
+	font-weight : bold;
+}
+
+.description {
+	background-color: #A63D3D;
+	padding : 2%;
+	width : 85%;
+	margin : auto;
+	font-size: 20px;
+	border-style : solid;
+	border-width : 1px;
+}
+
+.votation-container {
+	padding-top : 1%;
+	display : flex;
+	text-align : center;
+	flex-direction: column;
+	background-color: #7C0000;
+	width : 100%;
+	border-style : solid;
+	border-width : 0px 0px 1px 0px;
+}
+
+#votation-header {
+	font-size : 30px;
+	margin-bottom: 2%;
+}
+
+.votation-container p {
+	font-size : 25px;
+	font-weight : 500;
+	margin : 0;
+}
+
+.slidecontainer{
+	width : 80%;
+	margin : auto;
+	display : flex;
+	flex-direction: row;
+	padding : 2%;
+}
+
+.slidecontainer span {
+	font-size: 20px;
+	margin : auto;
+	padding-left : 2%;
+	padding-right : 2%;
+	font-weight : 500;
+}
+
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 4em; /* Specified height */
+  border-radius : 50px 50px 50px 50px;
+  border-width : 1px;
+  border-style : solid;
+  background: #A63D3D; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  border-width : 1px;
+  border-style : solid;
+  border-radius : 50px 50px 50px 50px;
+  width: 3em; /* Set a specific slider handle width */
+  height: 3em; /* Slider handle height */
+  background: #7C0000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.review-container {
+	width : 100%;
+	display : flex;
+	flex-direction: column;
+	background-color: #A63D3D;
+}
+
+.single-review-container {
+	border-style : dotted;
+	border-width: 0px 0px 1px 0px;
+	padding-left : 10%;
+}
+
+.single-review-container p {
+	font-size : 18px;
+}
+
+.header-review {
+	height : 5%;
+	display : flex;
+	flex-direction: row;
+	border-style : solid;
+	border-width : 0px 0px 1px 0px;
+	text-align: center;
+}
+
+.review-header-container {
+	display : flex;
+	flex-grow : 1;
+	flex-direction: row;
+}
+
+.header-review p {
+	margin : auto;
+	margin-left : 35%;
+	font-size : 30px;
+	align-self: flex-end;
+	font-weight : 500;
+}
+
+.review-btn-container {
+	display : flex;
+	margin-bottom : 4px;
+	flex-grow : 1;
+	flex-direction: row;
+}
+
+
+.review-btn-container button{
+	align-self : flex-end;
+	background-color: #7C0000;
+	color : #000000;
+	border-style: solid;
+	border-width: 2px;
+	width: 60%;
+	font-size : 20px;
+	font-weight : bold;
+	border-color: #000000;
+	outline: none;
+}
+
+.review-btn-container button:active {
+	background-color: #000000;
+	color : #E20000;
+}
+
+.review-info {
+	padding : 3%;
+	display : flex;
+	flex-direction: column;
+}
+
+.review-above {
+	display : flex;
+	flex-direction: row;
+}
+
+.review-above p {
+	flex-grow : 1;
+}
+
+.review-below {
+	width : 65%;
+}
+
+.btn-vote{
+	background-color: #7C0000;
+	color : #000000;
+	border-style: solid;
+	border-width: 2px;
+	text-decoration : none;
+	width : 20%;
+	font-size : 20px;
+	font-weight : bold;
+	border-color: #000000;
+	margin : auto;
+	margin-bottom : 2em;
+	outline: none;
+}
+
+.btn-vote:visited,.btn-vote:hover,.btn-vote:link,.btn-vote:focus{
+	color : #000000;
+	text-decoration : none;
+	outline: none;
+}
+
+
+.btn-vote:active {
+	background-color: #000000;
+	color : #E20000;
+}
+
+
+.review-form {
+	padding : 3%;
+}
+
+.review-form label {
+	font-size : 18px;
+}
+
+.review-input {
+	font-size : 18px;
+	background-color: #ED6060;
+	outline : none;
+	border : none;
+}
+
+.review-input:focus {
+	background-color: #7C0000;
+	outline : none;
+	color : white;
+	border : none;
+}
+
+.submit-div {
+	display : flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.btn-addreview {
+	background-color: #7C0000;
+	color : #000000;
+	font-size: 18px;
+	font-weight : bold;
+	border-style : solid;
+	border-color: #000000;
+	margin : auto;
+	border-width : 1px;
+}
+
+.del-button-container {
+	
+	text-align: right;
+	
+}
+
+.delete-img {
+	
+	height : 50px;
+}
+
+
+
+
+
+
+
+
