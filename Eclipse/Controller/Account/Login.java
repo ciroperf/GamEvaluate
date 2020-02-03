@@ -21,14 +21,14 @@ import gamevaluate.model.GeneralUserManager;
 @WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 		} catch (NoSuchAlgorithmException e1) {
 			System.out.println("Errore md5 : "+ e1.getMessage());
 		}
-		 GeneralUserManager user_manager= new GeneralUserManager();
+		GeneralUserManager user_manager= new GeneralUserManager();
 		try {
 			boolean trovato = true;
 			GeneralUser user = user_manager.doRetrieveByKey(username);
@@ -61,14 +61,14 @@ public class Login extends HttpServlet {
 				String err="Errore : username/password errati";
 				session.setAttribute("message", err);
 				response.sendRedirect("presentation/login.jsp");
-			} else if (!user.isBanned()){
-				session.setAttribute("user", user);
-				response.sendRedirect("presentation/home.jsp");
 			} else {
-				
-				String err="Errore : utente bannato";
-				session.setAttribute("message", err);
-				response.sendRedirect("presentation/login.jsp");
+				if(user.isBanned()) {
+					session.setAttribute("message", "Utente bannato!");
+					response.sendRedirect("presentation/login.jsp");
+				} else {
+					session.setAttribute("user", user);
+					response.sendRedirect("presentation/home.jsp");
+				}
 			}
 		} catch (SQLException e) {
 			System.out.println("Errore retrieveByKey : "+ e.getMessage());
