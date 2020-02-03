@@ -1,0 +1,284 @@
+@charset "ISO-8859-1";
+
+.header-container {
+	z-index : 5;
+	position : fixed;
+	width : 100%;
+	height : 25%;
+	display : flex;
+	flex-direction : row;
+	align-content: center;
+	background-image : url("/GamEvaluate/images/headerGamEvaluate.png");
+	background-size : cover;
+}
+
+.header-container-no-search {
+	z-index : 5;
+	position : fixed;
+	width : 100%;
+	margin-left: -8px;
+	margin-top:-10px;
+	height : 25%;
+	display : flex;
+	flex-direction : row;
+	align-content: center;
+	background-image : url("/GamEvaluate/images/headerGamEvaluate.png");
+	background-size : cover;
+}
+
+
+.header-img {
+	flex-grow: 0.7;
+	margin : auto;
+	height : 80%;
+	width : 20%;
+}
+
+.header-img-no-search {
+	flex-grow: 0.7;
+	margin-right: 20%;
+	margin-top: auto;
+	margin-bottom: auto;
+	height : 80%;
+	width : 20%;
+	left: 20%;
+}
+
+
+.search-container {
+	flex-grow : 2;
+	display : flex;
+	flex-direction : column;
+	margin : auto;
+}
+
+.searchbar {
+	display : flex;
+	flex-direction : row;
+	height : 100%;
+}
+
+.toggle-container {
+	margin : auto;
+	margin-bottom : 20px;
+}
+
+.toggle-container input {
+	width : 300px;
+}
+
+.searchbar input{
+	background-color : #A63D3D;
+	height : 35%;
+	font-size : 25px;
+	border-radius: 50px 50px 50px 50px;
+	color : #000000;
+	border-color : black;
+	margin-bottom : auto;
+}
+
+.searchbar input:focus {
+	background-color : #000000;
+	color : #F50909;
+	border: 1px solid #800000;
+	box-shadow: none;
+}
+
+.searchbar input:focus::placeholder {
+	color : #F50909;
+}
+
+
+.searchbar input::placeholder{
+	color : #000000;
+}
+
+
+.filters-container {
+	flex-grow : 1.3;
+	width : 20%;
+	text-align: center;
+}
+
+.filter-header {
+	font-size: 18px;
+	margin : 0;
+	color : #A63D3D;
+}
+
+.btn-group {
+	height : 15%;
+}
+
+.filter-button {
+	background-color: #5E0303;
+	color : #bc4949;
+}
+
+.filter-name {
+	color : #A63D3D;
+	font-size : 12px;
+}
+
+.filters-form-container {
+	background-color: #1F1818;
+	margin : auto;
+	border-radius : 50px 50px 50px 50px;
+	width : 80%;
+	height : 80%;
+}
+
+.dropdown-container {
+	display : flex;
+	margin-top : 4%;
+	flex-direction : row;
+}
+
+.dropdown {
+	margin : auto;
+}
+
+
+.utente-container {
+	display : block;
+	border-color: black;
+	border-style : solid;
+	z-index :10;
+	border-width : 0px 0px 1px 0px;
+	padding : 2%;
+	cursor: pointer;
+}
+
+.utente-data {
+	display : flex;
+	flex-direction : row;
+}
+
+.user-left-container {
+	display : flex;
+	width : 50%;
+	flex-direction: row;
+}
+
+.user-name-role {
+	display : flex;
+	margin-left : 5%;
+	flex-direction: column;
+}
+
+.user-img {
+	height : 60px;
+}
+
+.user-email {
+	width : 50%;
+	margin : auto;
+}
+
+.utente-container p{
+	font-size : 20px;
+	font-weight : bold;
+}
+
+
+.game-container {
+	display : block;
+	border-color: black;
+	border-style : solid;
+	z-index :10;
+	border-width : 0px 0px 1px 0px;
+	padding : 2%;
+}
+
+.game-container-link {
+	text-decoration : none;
+	color : black;
+}
+
+.game-container-link:hover {
+	text-decoration : none;
+	color : black;
+}
+
+.game-data {
+	display : flex;
+	flex-direction : row;
+}
+
+.game-left-container {
+	display : flex;
+	width : 50%;
+	flex-direction: row;
+}
+
+.game-name-genre {
+	display : flex;
+	margin-left : 5%;
+	flex-direction: column;
+}
+
+.game-img {
+	height : 150px;
+	width : 25%;
+	border-style : solid;
+	border-width : 1px;
+}
+
+.game-platform {
+	width : 50%;
+	margin : auto;
+	display : flex;
+	flex-direction : row;
+}
+
+.game-platform p {
+	width : 80%;
+}
+
+.game-container p{
+	font-size : 20px;
+	font-weight : bold;
+}
+
+.game-vote {
+	display: flex;
+	align-self : flex-end;
+	flex-direction: column;
+	width : 20%;
+}
+
+.vote-text {
+	font-size : 25px;
+}
+
+.vote-container {
+	text-align : center;
+	width : 44px;
+	height : 44px;
+	background-color: #000000;
+	border-radius : 50px 50px 50px 50px;
+	justify-content: center;
+}
+
+.vote-container span{
+	font-size : 30px;
+	color : #DD0B0B;
+}
+
+.del-button-container {
+	
+	text-align: right;
+	display : flex;
+	flex-direction: column;
+	
+}
+
+.delete-img {
+	height : 50px;
+	margin : auto;
+}
+
+.modify-img {
+	height : 65px;
+	margin : auto;
+}
