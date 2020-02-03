@@ -126,75 +126,87 @@
 						if(target == "utenti") {
 							var utenti = arr.utenti;
 							var text = "";
-							var i;
-							for(i = 0; i < utenti.length; i++) {
-								text = text.concat("<div class='utente-container' onclick=\'window.location.href = \"/GamEvaluate/VisualizzaUtente?username=" + utenti[i].username + "\"\' >"
-										+ "<div class='utente-data'>"
-										+ "<div class='user-left-container'>"
-										+ "<img class='user-img' alt='Image not found' src='/GamEvaluate/images/user.png'>"
-										+ "<div class='user-name-role'>"
-										+ "<p>Username : "+utenti[i].username+"</p>");
-								var role = "";
-								switch(utenti[i].role) {
-									case 0 :
-										role = "Visitatore";
-										break;
-									case 1 :
-										role = "Utente";
-										break;
-									case 2 :
-										role = "Moderatore";
-										break;
-									case 3 :
-										role = "Amministratore";
-										break;
+							if(utenti.length != 0) {
+								var i;
+								for(i = 0; i < utenti.length; i++) {
+									text = text.concat("<div class='utente-container' onclick=\'window.location.href = \"/GamEvaluate/VisualizzaUtente?username=" + utenti[i].username + "\"\' >"
+											+ "<div class='utente-data'>"
+											+ "<div class='user-left-container'>"
+											+ "<img class='user-img' alt='Image not found' src='/GamEvaluate/images/user.png'>"
+											+ "<div class='user-name-role'>"
+											+ "<p>Username : "+utenti[i].username+"</p>");
+									var role = "";
+									switch(utenti[i].role) {
+										case 0 :
+											role = "Visitatore";
+											break;
+										case 1 :
+											role = "Utente";
+											break;
+										case 2 :
+											role = "Moderatore";
+											break;
+										case 3 :
+											role = "Amministratore";
+											break;
+									}
+									text = text.concat("<p>Role : "+role+"</p>"
+											+ "</div>"
+											+ "</div>"
+											+ "<div class='user-email'>"
+											+ "<p>Email : "+utenti[i].email+"</p>"
+											+ "</div>"
+											+ "</div>");
+									text = text.concat("</div>");
 								}
-								text = text.concat("<p>Role : "+role+"</p>"
-										+ "</div>"
-										+ "</div>"
-										+ "<div class='user-email'>"
-										+ "<p>Email : "+utenti[i].email+"</p>"
-										+ "</div>"
+							} else {
+								text = text.concat("<div class='no-found'>"
+										+ "<p>Nessun utente trovato</p>"
 										+ "</div>");
-								text = text.concat("</div>");
 							}
 							document.getElementById("content").innerHTML = text;
 						} else {
 							var giochi = arr.giochi;
 							var text = "";
-							var i;
-							for(i = 0; i < giochi.length; i++) {
-								if(giochi[i].valutazione == '0')
-									giochi[i].valutazione = '-';
-								text = text.concat("<a class='game-container-link' href='/GamEvaluate/presentation/info-game.jsp?gioco="+giochi[i].id+"'>"
-										+ "<div class='game-container'>"
-										+ "<div class='game-data'>"
-										+ "<div class='game-left-container'>"
-										+ "<img class='game-img' alt='Image not found' src='"+giochi[i].immagine+"'>"
-										+ "<div class='game-name-genre'>"
-										+ "<p>Titolo : "+giochi[i].nome+"</p>"
-										+ "<p>Genere: "+giochi[i].genere+"</p>"
-										+ "</div>"
-										+ "</div>"
-										+ "<div class='game-platform'>"
-										+ "<p>Piattaforma : "+giochi[i].piattaforma+"</p>"
-										+ "<div class='game-vote'>"
-										+ "<p class='vote-text'>Voto</p>"
-										+ "<div class='vote-container'><span>"+giochi[i].valutazione+"</span></div>"
-										+ "</div>");
-								if(<%=role%> == 3) {
-									text = text.concat("<form  action='/GamEvaluate/admin/DelGame' class = \"del-button-container\">"
-										  +	"<input type = \"hidden\" value = '"+giochi[i].id+"' name = idgioco>"
-										  +	"<input type=\"image\" class=\"delete-img\" alt=\"Image not found\" src=\"/GamEvaluate/images/delete-button.png\" onclick= \"return undoDeleteGame();\">"
-										  + "</form>");
-									text = text.concat("<form  action='/GamEvaluate/presentation/admin/modify-game.jsp' class = \"del-button-container\">"
-											  +	"<input type = \"hidden\" value = '"+giochi[i].id+"' name = gioco>"
-											  +	"<input type=\"image\" class=\"modify-img\" alt=\"Image not found\" src=\"/GamEvaluate/images/wrench.png\">"
+							if(giochi.length != 0) {
+								var i;
+								for(i = 0; i < giochi.length; i++) {
+									if(giochi[i].valutazione == '0')
+										giochi[i].valutazione = '-';
+									text = text.concat("<a class='game-container-link' href='/GamEvaluate/presentation/info-game.jsp?gioco="+giochi[i].id+"'>"
+											+ "<div class='game-container'>"
+											+ "<div class='game-data'>"
+											+ "<div class='game-left-container'>"
+											+ "<img class='game-img' alt='Image not found' src='"+giochi[i].immagine+"'>"
+											+ "<div class='game-name-genre'>"
+											+ "<p>Titolo : "+giochi[i].nome+"</p>"
+											+ "<p>Genere: "+giochi[i].genere+"</p>"
+											+ "</div>"
+											+ "</div>"
+											+ "<div class='game-platform'>"
+											+ "<p>Piattaforma : "+giochi[i].piattaforma+"</p>"
+											+ "<div class='game-vote'>"
+											+ "<p class='vote-text'>Voto</p>"
+											+ "<div class='vote-container'><span>"+giochi[i].valutazione+"</span></div>"
+											+ "</div>");
+									if(<%=role%> == 3) {
+										text = text.concat("<form  action='/GamEvaluate/admin/DelGame' class = \"del-button-container\">"
+											  +	"<input type = \"hidden\" value = '"+giochi[i].id+"' name = idgioco>"
+											  +	"<input type=\"image\" class=\"delete-img\" alt=\"Image not found\" src=\"/GamEvaluate/images/delete-button.png\" onclick= \"return undoDeleteGame();\">"
 											  + "</form>");
+										text = text.concat("<form  action='/GamEvaluate/presentation/admin/modify-game.jsp' class = \"del-button-container\">"
+												  +	"<input type = \"hidden\" value = '"+giochi[i].id+"' name = gioco>"
+												  +	"<input type=\"image\" class=\"modify-img\" alt=\"Image not found\" src=\"/GamEvaluate/images/wrench.png\">"
+												  + "</form>");
+									}
+									text = text.concat("</div>"
+											+ "</div>");
+									text = text.concat("</div></a>");
 								}
-								text = text.concat("</div>"
+							} else {
+								text = text.concat("<div class='no-found'>"
+										+ "<p>Nessun gioco trovato</p>"
 										+ "</div>");
-								text = text.concat("</div></a>");
 							}
 							document.getElementById("content").innerHTML = text;
 						}
