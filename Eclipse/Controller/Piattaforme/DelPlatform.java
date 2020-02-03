@@ -48,7 +48,7 @@ public class DelPlatform extends HttpServlet {
 				}
 
 				if (find) {
-					request.getSession().setAttribute("message", "Impossibile eliminare piattaforma: sono presenti piattaforme con tale genere");
+					request.getSession().setAttribute("message", "Impossibile eliminare piattaforma: sono presenti giochi con tale piattaforma");
 					response.sendRedirect("/GamEvaluate/presentation/admin/platforms.jsp");
 				} else {
 					modelPiattaforma.doDelete(nome);
