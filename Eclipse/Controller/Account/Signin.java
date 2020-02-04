@@ -35,7 +35,7 @@ public class Signin extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("ciao");
 	}
@@ -43,7 +43,7 @@ public class Signin extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("user");
 		String regex = "^[\\w-\\.+]*[\\w-\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 		HttpSession session = request.getSession();
@@ -84,7 +84,7 @@ public class Signin extends HttpServlet {
 							user.setUsername(username);
 							user.setEmail(email);
 							user.setBanned(false);
-							user.setRole(0);
+							user.setRole(1);
 							account_manager.doSave(user);
 							String note = "Registrazione effettuata!";
 							session.setAttribute("message", note);

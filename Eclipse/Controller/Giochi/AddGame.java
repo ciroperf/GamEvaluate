@@ -19,20 +19,18 @@ import gamevaluate.model.ValutazioneManager;
 public class AddGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static GiocoManager giocoModel = new GiocoManager();
-	private static GenereManager genereModel = new GenereManager();
-	private static PiattaformaManager piattaformaModel = new PiattaformaManager();
 	private static ValutazioneManager valutazioneModel = new ValutazioneManager();
 
 	public AddGame() {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 
