@@ -1,0 +1,104 @@
+@charset "ISO-8859-1";
+
+.site-container {
+	display : flex;
+	flex-direction: column;
+}
+
+
+.content-container {
+	background-color : #842828;
+	height: 110%;
+    width: 70%;
+    position: fixed;
+    align-self: center;
+    z-index : 1;
+}
+
+
+#content {
+	margin-top : 189px;
+	z-index : 2;
+    width: 70%;
+    margin-left : 15%;
+	margin-bottom : 4em;
+}
+
+
+body {
+	background-image : url("/GamEvaluate/images/BodyGamEvaluate.png");
+	background-position: center;
+}
+
+.sidebar-container {
+	background-color : #7C0000;
+	width : 15%;
+	position : fixed;
+	margin-top : 189px;
+	overflow-y: hidden;
+	transform: translateY(0);
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.sidenav {
+	display : flex;
+	flex-direction: column;
+}
+
+.sidebar-container-closed {
+	transform: translateY(-100%);
+}
+
+.sidebar-button {
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+	width : 50px;
+	height : 50px;
+	margin-top : 189px;
+	position : fixed;
+	margin-left : 5.5%;
+	background-color: #A63D3D;
+	border-radius: 0px 0px 50px 50px;
+	border-width : 1px;
+	border-color: #000000;
+	outline : none;
+}
+
+
+.sidebar-button:active {
+	outline : none;
+	background-color: #7C0000;
+}
+
+.sidebar-button:focus {
+	outline : none;
+}
+
+.sidebar-button:visited {
+	outline : none;
+	background-color: #A63D3D;
+}
+
+.sidenav a {
+	font-size : 25px;
+	padding: 3%;
+	text-decoration : none;
+	color : #000000;
+	border-style : solid;
+	border-width : 0px 1px 1px 0px;
+}
+
+.sidenav a:focus,.sidenav a:hover,.sidenav a:visited {
+	text-decoration : none;
+	color : #000000;
+}
+
+.sidenav a:active {
+	text-decoration : none;
+	background-color: #000000;
+	color : #DB0707;
+	border-color : #000000;
+}
