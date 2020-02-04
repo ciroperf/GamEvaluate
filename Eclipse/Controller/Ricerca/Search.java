@@ -46,11 +46,9 @@ public class Search extends HttpServlet {
 		String filtro_genere = request.getParameter("genere");
 		String filtro_piattaforma = request.getParameter("piattaforma");
 		String testo_searchbar = request.getParameter("value");
-		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		String target = request.getParameter("target");
-		GeneralUser user = (GeneralUser) session.getAttribute("user");
 		
 		//settaggio dei filtri
 		if(filtro_titolo == 1)
