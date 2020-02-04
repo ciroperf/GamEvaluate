@@ -218,6 +218,17 @@
 	</script>
 	<div class="header-container">
 		<a class ="header-img" href="/GamEvaluate/presentation/home.jsp"><img lt="File not found" src="/GamEvaluate/images/logo-lungo.png"></a>
+		<% if (user != null) { 
+		
+			String ruolo = "";
+			switch(user.getRole()) {
+			case 1: ruolo = "utente"; break;
+			case 2: ruolo = "moderatore"; break;
+			case 3: ruolo = "amministratore"; break;
+			}
+		%>
+			<div style = "position: absolute; z-index: 15; font-size: 20px; font-weight: bold; left: 40px;">Benvenuto: <%= user.getUsername() %>, <%= ruolo %></div>
+		<% } %>
 		<div class="search-container ">
 			<div class="active-black-3 active-black-4 mb-4 searchbar">
   				<input oninput="doSearch()" id="searchbar" class="form-control" type="text" placeholder="Search" aria-label="Search">
